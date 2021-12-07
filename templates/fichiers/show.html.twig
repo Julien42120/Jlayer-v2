@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fichiers
+{% endblock %}
+
+
+{% block body %}
+	<div class="FichierSTl">
+		<div class="viewer" style="width:100%; margin:0 auto">
+			<babylon extends="maximum" scene.debug="false" scene class="babylon">
+				<scene
+					debug="false" render-in-background="true" disable-camera-control="true">
+					<!-- Set the scene's main color (for both skybox and ground) -->
+					<main-color r="0" g="0" b="0"></main-color>
+					<!-- Enable and set the image processing configuration -->
+				</scene>
+				<model url="{{ asset ('assets/upload/FichierSTL/' ~ fichierSTL.fichierSTL[0] )}}"></model>
+			</babylon>
+			<h1 class="titleStl">{{ fichierSTL.nom }}</h1>
+		</div>
+		<a href="#PhotoLikeDownload">
+			<div class="box1">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</a>
+		<div class="OneSTL">
+			<div id="PhotoLikeDownload" class="PhotoLikeDownload row">
+				<div class="col-8">
+					<div class="imagefichier">
+						<img class="imageFichierSTL" src="{{ asset ('assets/upload/images/' ~ fichierSTL.images)}}"/>
+						<div class="Viensde">
+							<img class="PhotoSource" src="{{ asset ('assets/upload/photosUsers/' ~ fichierSTL.user.avatar)}}"/>
+							<h2>Fichier déposé par
+								{{fichierSTL.user}}</h2>
+						</div>
+					</div>
+				</div>
+				<div class="col-4">
+					<div class="TitreDescAvatar">
+						<h1>Instruction d'impression :</h1>
+						<p>
+							{{fichierSTL.description}}
+						</p>
+					</div>
+					<div class="Author">
+						<div class="Like">
+							{{ include('vote/_form.html.twig') }}
+							<div class="NbrLike">
+								<p>{{ voteTotal }}
+									Likes</p>
+							</div>
+						</div>
+					</div>
+					<div class="containerComment">
+						<div class="commentExist row">
+							{% for commentaireById in commentaireById %}
+								<div class="affichageComment col-12">
+									<img class="imageUserComment" src="{{ asset ('assets/upload/photosUsers/' ~ commentaireById.user.avatar)}}"/>
+									<div class="row">
+										<div class="col-6">
+											<p class="nomUserCommentaire">{{commentaireById.user.pseudo}}</p>
+										</div>
+										<div class="col-6">
+											<p class="commentUser">{{commentaireById.commentaire}}</p>
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+						<div class="formComment"></div>
+
+						<div class="voteComment">
+							{{ include('commentaires/_form.html.twig') }}
+						</div>
+						{% for message in app.flashes('success') %}
+							<div class="messageComm">
+								<div class="alert alert-danger" id="alertemodif">
+									{{ message }}
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+			<div class="download">
+				{% for fichierSTL in fichierSTL.fichierSTL %}
+					<a class="downloadFiles" href="{{ asset ('assets/upload/FichierSTL/' ~ fichierSTL )}}" download class="btn">
+						<i class="fa fa-download" style='font-size:30px;color:#C94114'></i>
+						<p class="DownloadText">Download</p>
+					</a>
+				{% endfor %}
+			</div>
+
+		</div>
+		<div class="impressionSimilaire">
+			<div class="cardStl">
+				<h1>Impression similaires</h1>
+				<div class="row">
+					{% for produitSimilaire in produitSimilaire %}
+						{% if (produitSimilaire.id != fichierSTL.id)%}
+							<div class="col-3">
+								<div class="card">
+									<a href="{{ path ('fichiers_show', {id : produitSimilaire.id})}}">
+										<img src="{{ asset ('assets/upload/images/' ~ produitSimilaire.images)}}" class="card-img-top" alt="...">
+									</a>
+									<div class="card-body">
+										<h5 class="card-title">{{produitSimilaire.nom}}</h5>
+										<p class="card-text">{{produitSimilaire.description}}</p>
+
+									</div>
+								</div>
+							</div>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="{{ asset ("assets/js/viewer.js")}}"></script>
+{% endblock %}

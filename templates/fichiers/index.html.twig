@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fichiers index
+{% endblock %}
+
+{% block body %}
+	<h1>Fichiers index</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Images</th>
+				<th>FichierSTL</th>
+				<th>Nom</th>
+				<th>Description</th>
+				<th>IsVerif</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for fichier in fichiers %}
+				<tr>
+					<td>{{ fichier.id }}</td>
+					<td>{{ fichier.images }}</td>
+					<td>{{ fichier.fichierSTL }}</td>
+					<td>{{ fichier.nom }}</td>
+					<td>{{ fichier.description }}</td>
+					<td>{{ fichier.isVerif ? 'Yes' : 'No' }}</td>
+					<td>
+						<a href="{{ path('fichiers_show', {'id': fichier.id}) }}">show</a>
+						<a href="{{ path('fichiers_edit', {'id': fichier.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="7">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('fichiers_new') }}">Create new</a>
+{% endblock %}

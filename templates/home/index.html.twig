@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+
+{% block body %}
+
+	<div class="Accueil">
+		<div class="Jlayers">
+			<h1>Jlayers</h1>
+			<a href="{{ path ('bibliotheque')}}">
+				<button class="glowButton" type="button">Commencer à imprimer</button>
+			</a>
+			<a href="#FichierSTL">
+				<div class="box1">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</a>
+		</div>
+		<div class="FichierSTL" id="FichierSTL">
+			<h1>Les Fichiers STL</h1>
+			<p>Les fichiers STL présent dans cette bibliotheque sont des fichiers prêts a l'utilisation, vous n'avez qu'a les téléchargées, ouvrir celle-ci sur un logiciel adaquat comme Cura. Enregistré sur une carte SD ou une clef USB et a insérer cette dernière dans votre imprimante 3D. Tout les fichiers sont déja configurés, vous pourrez sous Cura faire un bon nombre de configuration : la taille de l'impression, le pourcentage de remplissage, l'épaisseur de la parois externe , ...! A vous de vous amusé !
+			</p>
+		</div>
+
+		<div class="row">
+			<div class="PLA col-6 col-sm-12">
+				<div class="insidePLA">
+					<a href="{{ path ('impression_fil')}}">
+						<button class="btn btn-warning" type="button">Imprimantes 3D filaments</button>
+					</a>
+				</div>
+			</div>
+			<div class="Resine col-6 col-sm-12">
+				<div class="insideResine">
+					<a href="{{ path ('impression_resine')}}">
+						<button class="btn btn-warning" type="button">Imprimantes 3D Résines</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	{% endblock %}

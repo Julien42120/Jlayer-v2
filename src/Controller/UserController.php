@@ -1,0 +1,156 @@
+<?php
+
+namespace App\Controller;
+
+use App\Entity\Fichiers;
+use App\Entity\User;
+use App\Form\FichiersType;
+use App\Form\UserType;
+use App\Repository\CommentairesRepository;
+use App\Repository\FichiersRepository;
+use App\Repository\UserRepository;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+
+/**
+ * @Route("/user")
+ */
+class UserController extends AbstractController
+{
+    /**
+     * @Route("/", name="user_index", methods={"GET", "POST"})
+     */
+    public function index(Request $request, FichiersRepository $fichiersRepository, SluggerInterface $slugger, CommentairesRepository $commentairesRepository): Response
+    {
+        $fichier = new Fichiers();
+        $form = $this->createForm(FichiersType::class, $fichier);
+
+        // dd($form);
+        $form->handleRequest($request);
+        $images = $form->get('images')->getData();
+        $fichiersSTL = $form->get('fichierSTL')->getData();
+        $folderName = $form->get('nom')->getData();
+
+        // if (!file_exists('path/to/directory')) {
+        //     mkdir('path/to/directory', 0777, true);
+        // }
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($images !== null) {
+                $fichier->setImages($this->upload($images, 'images', $slugger, null));
+            }
+
+            if ($fichiersSTL !== null) {
+                $FolderId = uniqid();
+                foreach ($fichiersSTL as $fichierSTL) {
+                    $fichier->setFichierSTL($this->upload($fichierSTL, 'fichierSTL', $slugger, $folderName . $FolderId));
+                }
+            }
+
+            $fichier->setUser($this->getUser());
+            $fichier->setIsVerif(false);
+            $this->getDoctrine()->getManager()->persist($fichier);
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+
+        $commentaireByUser = $commentairesRepository->findBy(['user' => $this->getUser()], [], 4);
+
+        return $this->render('user/index.html.twig', [
+            'files' => $fichiersRepository->findBy(['user' => $this->getUser()->getId()]),
+            'user' => $this->getUser(),
+            'form' => $form->createView(),
+            'commentaireByUser' => $commentaireByUser,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="user_show", methods={"GET"})
+     */
+    public function show(User $user): Response
+    {
+        return $this->render('user/show.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, User $user, SluggerInterface $slugger, UserPasswordEncoderInterface $passwordEncoder): Response
+    {
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+        $avatar = $form->get('avatar')->getData();
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($avatar !== null) {
+                $user->setAvatar($this->upload($avatar, 'avatar', $slugger, null));
+            }
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('user_index', [
+                'id' => $user->getId()
+            ], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('user/edit.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/{id}", name="user_delete", methods={"POST"})
+     */
+    public function delete(Request $request, User $user): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($user);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+
+    public function upload($file, $target_directory, $slugger, $folderName)
+    {
+
+        if ($file) {
+            $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            // this is needed to safely include the file name as part of the URL
+            $safeFilename = $slugger->slug($originalFilename);
+            $newFilename = $safeFilename . '-' . uniqid() . '.' . $file->getClientOriginalExtension();
+            // Move the file to the directory where brochures are stored
+            try {
+                if ($folderName) {
+                    $file->move(
+                        $this->getParameter($target_directory) . '/' . $folderName,
+                        $newFilename
+                    );
+                } else {
+                    $file->move(
+                        $this->getParameter($target_directory),
+                        $newFilename
+                    );
+                }
+            } catch (FileException $e) {
+                // ... handle exception if something happens during file upload
+            }
+
+            // updates the 'brochureFilename' property to store the PDF file name
+            // instead of its contents
+
+            return $folderName . '/' . $newFilename;
+        }
+    }
+}

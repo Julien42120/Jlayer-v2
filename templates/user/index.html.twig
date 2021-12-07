@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profil User
+{% endblock %}
+
+{% block body %}
+
+	<div class="Users">
+		<div class="Avatar">
+			<h1>Salut
+				{{ user.pseudo }}
+			</h1>
+			<p>Ici tu peux gérer ton activité</p>
+			<img class="AvatarUser" src="{{ asset ('assets/upload/photosUsers/' ~ user.avatar) }}">
+			<br>
+			<a class="modifProfil" href="{{ path ('user_edit', {'id' : app.user.id}) }}">Modifier mon profil</a>
+		</div>
+		<div class="Fichiers">
+			<div class="accordion accordion-flush" id="accordionFlushExample">
+				<div class="accordion-item">
+					<h2 class="accordion-header" id="flush-headingOne">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+							Dépot de fichiers
+						</button>
+					</h2>
+					<div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+						<div class="accordion-body">
+							{{ include ('fichiers/_form.html.twig') }}
+						</div>
+					</div>
+				</div>
+				<div class="accordion-item">
+					<h2 class="accordion-header" id="flush-headingTwo">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+							Gérer mes fichiers
+						</button>
+					</h2>
+					<div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+						<div class="accordion-body">
+							{% for file in files %}
+								<div class="Gerer">
+									<div class="col-12 FichierUser">
+										<div class="col-3">
+											<img src="{{ asset ('assets/upload/images/' ~ file.images) }}"/>
+										</div>
+										<div class="col-3">
+											<p class="FichierName">{{file.nom}}</p>
+										</div>
+										<div class="col-3">
+											<form class="FormDelete" method="post" action="{{ path('fichiers_delete', {'id': file.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce fichier ?');">
+												<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ file.id) }}">
+												<button class="btn btn-outline-danger">Supprimer</button>
+											</form>
+										</div>
+										<div class="col-3">
+											<a type="button" href="{{ path ('fichiers_edit', {'id' : file.id})}}" class="btn btn-outline-success Modif">Modifier</a>
+										</div>
+
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+
+				<div class="accordion-item">
+					<h2 class="accordion-header" id="headingThree">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+							Historique de mes commentaires
+						</button>
+					</h2>
+					<div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Photos du fichier</th>
+									<th scope="col">Nom du fichier</th>
+									<th scope="col">Mon commentaire</th>
+									<th scope="col">Supprimer</th>
+								</tr>
+							</thead>
+						</table>
+						{% for commentaireByUser in commentaireByUser %}
+
+							<div class="col-12 CommentaireUser">
+								<div class="col-3">
+									<img class="imageCom" src="{{ asset ('assets/upload/images/' ~ commentaireByUser.fichier.images)}}"/>
+								</div>
+								<div class="col-3">
+									<h1>{{commentaireByUser.fichier.nom}}</h1>
+								</div>
+								<div class="col-3">
+									<p class="FichierName">{{commentaireByUser.commentaire}}</p>
+								</div>
+								<div class="col-3">
+									<form class="FormDelete" method="post" action="{{ path('commentaires_delete', {'id': commentaireByUser.id}) }}" onsubmit="return confirm('Vous etes sûr de vouloir supprimé ce commentaire ?');">
+										<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ commentaireByUser.id) }}">
+										<button class="btn btn-outline-danger">Supprimer</button>
+										{# <button><img class="DeleteCom" src="../assets/images/trash.png"/></button> #}
+									</form>
+								</div>
+							</div>
+
+						{% endfor %}
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,823 @@
+@import "scrolldown";
+@import "scrolldownHome";
+@import "Login";
+@import "ModifUser";
+@import "ModifFichier";
+@import "buttonFirst";
+@import "buttonLike";
+
+
+body{
+    width: 100vw;
+    height: auto;
+    overflow-x: hidden;
+    font-family: 'Dosis', sans-serif;
+}
+
+.navbar{
+    height: 7vh;
+    max-width: 100vw;
+    a{
+        font-size: 1rem;
+    }
+    .Avatar{
+        width: 120%;
+        padding-bottom: 1vw;
+    }
+}
+
+.footer{
+    height:auto;
+    background-color: black;
+    .logo{
+        width: 10%;
+    }
+    h1{
+        color: white;
+        padding-top: 2%;
+        font-size: 0.7rem;
+    }
+}
+
+.pagination{
+    margin: 0 auto;
+    padding-bottom: 3vh;
+}
+
+.Accueil{
+    height: 100vh;
+    text-align: center;
+
+    .Jlayers{
+        width: 100vw;
+        height: 100%;
+        background-image: url("../images/bibli.webp");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        
+        h1{
+            padding-top:10%;
+            font-size: 10vw;
+            color: white;
+            text-shadow: 4px -2px 4px rgb(0, 0, 0);
+            animation: fadeInAnimation ease 3s
+        }
+    }
+
+    .Presentation{  
+        width: 70%; 
+        height: auto;
+        margin: 0 auto;
+        h1{
+            padding-top: 4vh;
+            font-size: 2rem;
+        }   
+        p{
+            margin: 8%;
+            font-size: 0.9rem;
+        }
+    }
+
+    .row{
+        width: 100%;
+        height: 60vh;
+
+        .PLA{
+            height: 60vh;
+            width: 50%;
+            position: relative;
+            background-image: url("../images/Formlabs_1.jpg");
+            background-size: cover;
+            background-position: center;
+            border-right: 3px solid black;
+            // background-attachment: fixed;
+
+            .insidePLA{
+            position: absolute;
+            top: 40%; 
+            width: 100%;
+                .btn {
+                    margin-top: 20%;
+                    padding: 2%;
+                    font-size: 150%;
+                }
+            }
+        }
+
+        .Resine{
+            height: 60vh;
+            width: 50%;
+            position: relative;
+            background-image: url("../images/Formlabs_1\ \(1\).jpg");
+            background-size: cover;
+            background-position: center;
+            // background-attachment: fixed;
+
+            .insideResine{
+            position: absolute;
+            top: 40%; 
+            width: 100%; 
+                .btn {
+                    margin-top: 20%;
+                    padding: 2%;
+                    font-size: 150%;
+                   
+                }
+            }
+        }  
+    }
+
+    .FichierSTL{
+        width: 70%; 
+        height: auto;
+        margin: 0 auto;
+        h1{
+            padding-top: 4vh;
+        }   
+        p{
+            margin: 8%;
+        }
+    }
+}
+
+.ImpressionFIl{
+    height: 100vh;
+    text-align: center;
+    .QlqPla{
+        width: 100vw;
+        height: 100vh;
+        
+        .video-background {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            max-width: auto;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            z-index: -1;
+          }
+        h1{
+            padding-top:20vh;
+            font-size: 5vw;
+            color: white;  
+        }
+    }
+    .Fonctionnement{
+        width: 70%; 
+        height: auto;
+        margin: 0 auto;
+        h1{
+            padding-top: 1vh;
+        }   
+        p{
+            margin: 5%;
+            font-size: 1rem;
+        }
+    }
+
+    .card-group{
+        .card-img-top{
+            max-width: 70%;
+            margin: 5% auto;
+        }
+        .card{
+            .card-body{
+                padding-bottom: 5%;
+                h5{
+                    font-size: 1.5rem;
+                }
+                p{
+                    font-size: 0.8rem;
+                    width: 50%;
+                    margin: 0 auto ;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                }
+            }
+        }
+    }
+
+    .ProduitPla{
+        height: 60vh;
+        margin: 0 auto;
+        background-image: url("../images/bobines.webp");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+
+        h1{
+            font-weight: bold;
+            color: white;
+            font-size: 4vw;
+            padding-top: 17vh;
+        }   
+    }
+}
+
+.ImpressionRes{
+    height: 100vh;
+    text-align: center;
+    .QlqPla{
+        width: 100vw;
+        height: 100vh;
+        
+        .video-background {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            max-width: auto;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            z-index: -1;
+          }
+        h1{
+            padding-top:20vh;
+            font-size: 5vw;
+            color: white;  
+        }
+    }
+    .Fonctionnement{
+        width: 70%; 
+        height: auto;
+        margin: 0 auto;
+        h1{
+            padding-top: 1vh;
+        }   
+        p{
+            margin: 5%;
+            font-size: 1rem;
+        }
+    }
+
+    .card-group{
+        .card-img-top{
+            width: 60%;
+            margin: 5% auto;
+        }
+        .card{
+            .card-body{
+                padding-bottom: 5%;
+                h5{
+                    font-size: 1.5rem;
+                }
+                p{
+                    font-size: 0.8rem;
+                    width: 50%;
+                    margin: 0 auto ;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 3;
+                    -webkit-box-orient: vertical;
+                }
+            }
+        }
+    }
+
+    .ProduitPla{
+        height: 60vh;
+        margin: 0 auto;
+        background-image: url("../images/impressionresine.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+
+        h1{
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+            font-size: 4vw;
+            padding-top: 17vh;
+        }   
+    }
+   
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+}
+
+
+.Bibliotheque{
+    text-align: center;
+    background-color: #f3e2a3;
+    .STL{
+        height: 50%;
+        background-image: url("../images/carouStl1.jpg");
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: top;
+
+        h1{
+            padding:6%;
+            font-size: 4vw;
+            color: rgb(255, 255, 255);
+            animation: fadeInAnimation ease 3s
+        }
+    }
+
+    .Search{
+        padding: 2%;
+        height: auto;
+        flex-direction: row;
+        display: flex;
+        align-items:center;
+        .row{
+            width: 80%;
+            vertical-align: middle;
+            margin: 2% auto;
+        
+            .inputSearch{
+                display: flex;
+                flex-direction: row;
+                .form-control{
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .card-group{
+        width: 90vw;
+        margin: 0 auto;
+        .row{
+            justify-content: space-between;
+            .card{
+                width: 23%;
+                margin: 2% auto;
+                padding: 0;
+                transition: transform 2s;
+                .card-body{
+                    .card-title{
+                        font-size: 1.1vw;
+                        font-weight: bold;
+                    }
+                    .card-text{
+                        font-size: 0.8vw;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                    }
+                    .likeBibli{
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        height: 18%;
+                        .nbrLikeCard{
+                            padding: 2%;
+                            font-size: 0.8vw;
+                        }
+                        .heartCard{
+
+                            width: 7%;
+                        }
+                    }
+                }
+            }
+           .card:hover{
+                transform: scale(1.05);
+                box-shadow: 0 0 11px rgba(33,33,33,.2); 
+            }
+        }
+    }
+}
+
+.Login{
+    overflow-y: hidden;
+    width: 100vw;
+}
+
+.FichierSTl{
+   height: auto;
+   background-color: #F3E2A3;
+
+       .viewer{
+        padding: 0 !important;
+        margin: 0 auto;
+        justify-content: center;
+
+            .titleStl{
+                position: absolute;
+                z-index: 1;
+                top: 20%;
+                left: 10%;
+                font-weight: bold;
+                font-family: 'Dosis', sans-serif;
+                font-size: 4vw;
+                color: white;
+                position: absolute;
+                text-shadow: rgba(255, 255, 255, 0.419) 2px 5px;
+
+            }
+        }
+    
+    .babylonjs-canvas{
+        height: 570px !important;
+    }
+
+    .OneSTL{
+        height: auto;
+        width: 80%;
+        margin: 0 auto;
+        padding: 3%;
+
+        .PhotoLikeDownload{
+            margin-top: 6%;
+            padding: 3%;
+            .col-8{
+                padding: 0 !important;
+            }
+            .col-4{
+                background-color: rgba(119, 119, 119, 0.357);
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+            }
+          
+            .imagefichier{
+                display: flex;
+                width: 100%;
+
+                .imageFichierSTL{
+                    width: 100%;
+                    margin: 0 auto;
+                    animation: fadeInAnimation ease 3s;
+                    animation-duration: ease 5s;
+                    border-top-left-radius: 20px;
+                    border-bottom-left-radius: 20px;
+                }
+                .Viensde{
+                    background-color: rgba(119, 119, 119, 0.357);
+                    position: absolute;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    padding: 1%;
+                    width: 15%;
+                    border-bottom-right-radius: 20px;
+                    border-top-left-radius: 20px;
+                    
+                    .PhotoSource{
+                        width: 15%;
+                        border-radius: 10%;
+                        
+                    }
+                    h2{
+                        margin-left: 5%;
+                        font-size: 80%;
+                        color: rgb(0, 0, 0);
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+        
+        .Author{
+            .Like{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                width: 100%;
+                justify-content: center;
+                
+                .NbrLike{
+                    font-size: 80%;
+                    font-weight: bold;
+                    color: red;
+                }
+            }
+        }
+        .containerComment{
+            width: 100%;
+            background-attachment: fixed;
+            * {
+                scrollbar-width: thin;
+                scrollbar-color: #8c330d #c6bb96;
+              }
+            
+              /* Chrome, Edge, and Safari */
+              *::-webkit-scrollbar {
+                width: 8px;
+              }
+            
+              *::-webkit-scrollbar-track {
+                background: #c6bb96;
+              }
+            
+              *::-webkit-scrollbar-thumb {
+                background-color: #8c330d;
+                border-radius: 10px;
+                border: 0px none #ffffff;
+              }
+            .commentExist{
+                margin: 0 auto;
+                display: flex;
+                padding-top: 5%;
+                max-height: 324px;
+                overflow-y: scroll;
+                overflow-x: hidden;
+                
+                
+                .affichageComment{
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    border-bottom: 1px solid grey;
+                    padding: 2%;
+                    .imageUserComment{
+                        width: 20%;
+                        border-radius: 50%;
+                    }
+                    .row{
+                        display: flex;
+                        flex-direction: column;
+                        width: 100%;
+                        margin-left: 10%;
+                        .col-6{
+                            width: 100%;
+                            .nomUserCommentaire{
+                                margin-bottom: 0% !important;
+                                font-weight: bold;
+                                color: rgb(12, 12, 12);
+                            }
+                            .commentUser{
+                                font-size: 70%;
+                                font-weight: bold;
+                                color: rgb(7, 7, 7);
+                            }
+                        }
+                    }
+                }  
+            }
+                
+            .voteComment{
+                width: 100%;
+                margin: 0 auto;
+                padding: 2%;
+                    .inputCommentaire{
+                        .submitComment{
+                            background-color: transparent;
+                            border: none;
+                        }
+                        #commentaires_commentaire{
+                        width: 100%;
+                        background-color: rgba(255, 255, 255, 0.391);
+                        border: none;
+                        }
+                        form{
+                            display: flex;
+                            align-items: center;
+                        }
+                        
+                }
+            }
+            .messageComm{
+                width: 50%;
+                margin: 0 auto;
+                .alert{
+                    font-size: 80%;
+                    text-align: center;
+                }
+            }
+        }
+        .download{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            .downloadFiles{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 2%;
+                }
+            .DownloadText{
+                font-size: 80%;
+                font-weight: bold;
+                color: rgb(214, 114, 6);
+            }
+        }
+
+        .TitreDescAvatar{
+            padding: 5%;
+            text-align: center;
+            h1{
+                font-size: 90%;
+                font-weight: bold;
+            }
+            p{
+                font-size: 70%;
+                height: auto;
+            }
+        }
+        
+    }
+    .impressionSimilaire{
+        background-image: url('../images/silk-background-orange-fabric.jpg');
+        background-attachment: fixed;
+        padding: 3%;
+        margin-top: 5%;
+        .cardStl{
+            h1{
+                font-weight: bold;
+                font-family: 'Dosis', sans-serif;
+                font-size: 4vw;
+                text-align: center;
+                color: white;
+            }
+            .row{
+                padding: 2%;
+                display: flex;
+                justify-content: center;
+                .card{    
+                    width: 80%;
+                    transition: transform 2s;
+                    .card-body{
+                        .card-title{
+                            font-size: 1.1vw;
+                            font-weight: bold;
+                        }
+                        .card-text{
+                            font-size: 0.8vw;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 2;
+                            -webkit-box-orient: vertical;
+                        }
+                    }
+                }
+                .card:hover{
+                    transform: scale(1.05);
+                    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+                }
+            }
+        }
+    }
+}
+
+.Users{
+    text-align: center;
+    width: 100vw;
+    background-image: url('../images/filamentPng.png');
+    background-position:top ; 
+  
+    .Avatar{
+        padding-top: 10vh;
+        padding-bottom: 7vh;
+        .AvatarUser{
+            width: 12%;
+            border-radius: 50%;
+            margin-bottom: 3vh;
+        }
+        .modifProfil{
+            color: black;
+            font-weight: bold;
+        }
+    }
+
+    .Fichiers{
+        width: 90%;
+        margin: 0 auto; 
+        height: auto;
+    
+        .Depot{
+            padding: 5vh;
+            h1{
+                font-size: 2rem;
+            }
+            .text{
+                margin: 4vh;
+                font-size: 0.8rem;
+                color: rgb(60, 60, 60);
+
+                .CategorieLabel{
+                    font-size: 0.8rem;
+                    color: rgb(60, 60, 60); 
+                    font-weight: bold; 
+                }
+            }
+            .textArea{
+                height: 20%;
+                width: 80%;
+            }
+
+            .mb-3{
+                padding-top: 0vh;
+                padding-right: 0vw;
+            }
+
+            .File{
+                margin: auto;
+                width: 80%;
+                background-color:#d07aff80 ;
+                padding: 2%;
+                .GetFile{
+                    font-size: 0.8rem;
+                    text-decoration: underline;
+                }
+            }
+
+            .Image{
+                margin: 0 auto;
+                width: 80%;
+                background-color:#1814ff82 ;
+                padding: 2%;
+                .GetImage{
+                font-size: 0.8rem;
+                text-decoration: underline;
+                }
+            }
+            
+            #avatar{
+                width: 10vw;
+            }
+
+            .conditions{
+                margin: 5vh;
+                font-size: 0.8rem;
+                color: rgb(60, 60, 60); 
+                font-weight: bold;
+            }
+        
+        }
+    
+        .accordion{
+            width: 50%;
+            margin: 0 auto;
+            padding-bottom: 8vh;
+            .accordion-body{
+                padding: 0rem 3.25rem;
+                .Gerer{
+                    padding: 2%;
+                    border-radius: 10px;
+                    border-bottom: 1px solid black;
+                    .FichierUser{
+                        height: auto;
+                        width: 100%;
+                        flex-direction: row;
+                        display: flex;
+                        align-items:center;
+                        .col-3{
+                            vertical-align: middle;
+                            img{
+                            width: 60%;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .CommentaireUser{
+                height: auto;
+                width: 100%;
+                flex-direction: row;
+                display: flex;
+                align-items:center;
+                border-radius: 10px;
+                border-bottom: 1px solid black;
+                .col-3{
+                    vertical-align: middle;
+                    padding: 2%;
+                    h1{
+                        font-size: 1rem;
+                    }
+                    p{
+                        font-size: 0.7rem;
+                    }
+                    .imageCom{
+                        width: 55%;
+                    }
+                    // button{
+                    //     width: 30%;
+                    //     .DeleteCom{
+                    //         width: 60%;
+                    //     }
+                    // }
+                }
+            }
+        }      
+    }  
+}
+
+.formVote{
+    width: 20%;
+    label{
+
+        display: none;}
+}

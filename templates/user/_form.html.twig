@@ -1,0 +1,20 @@
+<div class="formModif">
+	{{ form_start(form) }}
+	<div class="col-12">
+		{{ form_widget(form.pseudo) }}
+	</div>
+	{# <div class="col-12">
+			{{ form_widget(form.password)}}
+		</div> #}
+	<div class="col-12">
+		<div class="changeAvatar">
+			<p>Changement de l'avatar</p>
+			{{ form_widget(form.avatar)}}
+		</div>
+	</div>
+	<div class="col-12">
+		<button type="submit" class="btn button">Modifier</button>
+	</div>
+
+	{{ form_end(form) }}
+</div>

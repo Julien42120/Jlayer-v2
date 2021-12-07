@@ -1,0 +1,22 @@
+<div class="formVote">
+	<div id="likeVoteUser" data-fichier="{{fichierSTL.id}}">
+		{% if user == null %}
+			<a>
+				<script type="text/javascript">
+					function fun() {
+if (window.confirm("Vous devez vous connecté pour aimer un fichier")) {
+window.location.href ='{{ path ('app_register') }}';
+};
+}
+				</script>
+			</head>
+			<i class='fas fa-heart' style='font-size:30px;color:black' onclick="fun();"></i>
+		</a>
+	{% else %}
+		{% if liked == true %}
+			<i class='fas fa-heart' style='font-size:30px;color:red'></i>
+		{% else %}
+			<i class='fas fa-heart' style='font-size:30px;color:black'></i>
+		{% endif %}
+	{% endif %}
+</div></div>

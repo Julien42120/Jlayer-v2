@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!
+{% endblock %}
+
+{% block body %}
+
+{% if error %}
+	<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+
+<div class="Login">
+	<section>
+		<div class="container">
+			<div class="user signinBx">
+				<div class="imgBx"><img src="{{ asset ('assets/images/vase1.jpeg')}}" alt=""/></div>
+				<div class="formBx">
+					<form method="post">
+						<h2>Connexion</h2>
+						<input type="text" value="{{ last_username }}" placeholder="Pseudo" name="pseudo" id="inputPseudo" autocomplete="username" required autofocus>
+						<input type="password" name="password" placeholder="Mot de passe" id="inputPassword" autocomplete="current-password" required>
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+						<input type="hidden" name="form" value="login">
+						<input type="submit" name="" value="Connexion"/>
+						<p class="signup">
+							Vous n'avez pas encore de compte ?
+							<a href="#" onclick="toggleForm();">Créer</a>
+						</p>
+					</form>
+				</div>
+			</div>
+			<div class="user signupBx">
+				<div class="formBx">
+					{{ form_start(registrationForm, { 'attr': {'action': path("app_register_process") , 'method': 'post'} }) }}
+					<h2>Créer un compte</h2>
+					{{ form_widget(registrationForm.pseudo) }}
+					{{ form_widget(registrationForm.mail) }}
+					{{ form_widget(registrationForm.plainPassword) }}
+					<p class="choixPhoto">Choix d'une photo de profil</p>
+					{{ form_widget(registrationForm.avatar) }}
+					{{ form_widget(registrationForm.agreeTerms) }}
+					{{ form_label(registrationForm.agreeTerms, 'J\'accepte les conditions' ) }}
+					<input type="hidden" name="form" value="register">
+					<input type="submit" name="" value="Connexion"></input>
+                             
+                                <p class="signup">
+                                    Vous avez un compte ?
+                                    <a href="#" onclick="toggleForm();">Connexion</a>
+                                </p>
+					{{ form_end(registrationForm) }}
+						</div>
+						<div class="imgBx"><img src="{{ asset ('assets/images/vase2.jpeg')}}" alt=""/></div>
+					</div>
+				</div>
+            </div>
+		</section>
+    </div>
+
+	{% endblock %}
+
+	{% block javascripts %}
+		<script src="{{ asset ("assets/js/Login.js")}}"></script>
+	{% endblock %}

@@ -1,0 +1,73 @@
+.backgroundModif{
+     width: 100vw;
+     background-image: url('../images/filamentPng.png');
+    background-position:top ; 
+}
+
+.ModifUser{
+    text-align: center;
+    color: white;
+   
+}
+
+.container{
+    width: 100vw;
+    padding: 5vh;
+     
+    .InputModif{
+        width: 50%;
+        text-align: center;
+        margin: 0 auto;
+       background-color: rgba(0, 0, 0, 0.666);
+       border-radius: 30px;
+       padding: 10vh ;
+
+        .formModif{
+          
+            margin: 0 auto;
+            text-align: center;
+
+            .col-12{
+                padding: 2vh;
+
+                .input{
+                    width: 80%;
+                }
+
+                .changeAvatar{
+                    margin: 0 auto;
+                    width: 100%;
+                    border-radius: 20px;
+                    padding: 5vh;
+
+                    p{
+                        font-weight: bold;
+                        color: white;
+                    }
+                }
+            }
+        }
+       
+
+        .button{
+            margin-bottom: 1vh;
+            width: 80%;
+            color: white;
+            background-color: #D112FF;
+        }
+
+        .buttonDelete{
+            width: 80%;
+            color: white;
+            background-color: #4D4EFF;
+            margin-bottom: 5vh;
+        }
+
+        .retour{
+            margin-top: 3vh;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+        }
+    }
+
+}

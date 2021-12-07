@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Fichiers{% endblock %}
+
+{% block body %}
+    <h1>Create new Fichiers</h1>
+
+    {{ include('fichiers/_form.html.twig') }}
+
+    <a href="{{ path('fichiers_index') }}">back to list</a>
+{% endblock %}

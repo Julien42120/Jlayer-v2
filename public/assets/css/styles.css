@@ -1,0 +1,1198 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap");
+@import url(https://fonts.googleapis.com/css?family=Roboto:900);
+.box span {
+  width: 40px;
+  height: 40px;
+  display: block;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(45deg);
+  margin: -10px;
+  animation: animate 2s infinite;
+  top: 90vh;
+  left: 90vw;
+  position: absolute;
+}
+
+.box span:nth-child(2) {
+  animation-delay: -0.2s;
+}
+
+.box span:nth-child(3) {
+  animation-delay: -0.4s;
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.box1 span {
+  width: 40px;
+  height: 40px;
+  display: block;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  transform: rotate(45deg);
+  margin: -10px;
+  animation: animate 2s infinite;
+  top: 90vh;
+  left: 50vw;
+  position: absolute;
+}
+
+.box1 span:nth-child(2) {
+  animation-delay: -0.2s;
+}
+
+.box1 span:nth-child(3) {
+  animation-delay: -0.4s;
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: rotate(45deg) translate(10px, 10px);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+section {
+  height: 83.8vh;
+  background-color: #E9EAE5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+section .container {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  background: #fff;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+section .container .user {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+section .container .user .imgBx {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  background: #ff0;
+  transition: 0.5s;
+}
+
+.choixPhoto {
+  font-size: 0.7rem;
+  text-align: center;
+  color: grey;
+}
+
+section .container .user .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+section .container .user .formBx {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  transition: 0.5s;
+  flex-direction: column;
+}
+
+section .container .user .formBx form h2 {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+section .container .user .formBx form input {
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  background: #f5f5f5;
+  color: #333;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  margin: 8px 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+section .container .user .formBx form input[type=submit] {
+  width: 10vw;
+  background: #677eff;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.5s;
+}
+
+section .container .user .formBx form .signup {
+  position: relative;
+  margin-top: 20px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #555;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+section .container .user .formBx form .signup a {
+  font-weight: 600;
+  text-decoration: none;
+  color: #677eff;
+}
+
+section .container .signupBx {
+  pointer-events: none;
+}
+
+section .container.active .signupBx {
+  pointer-events: initial;
+}
+
+section .container .signupBx .formBx {
+  left: 100%;
+}
+
+section .container.active .signupBx .formBx {
+  left: 0;
+}
+
+section .container .signupBx .imgBx {
+  left: -100%;
+}
+
+section .container.active .signupBx .imgBx {
+  left: 0%;
+}
+
+section .container .signinBx .formBx {
+  left: 0%;
+}
+
+section .container.active .signinBx .formBx {
+  left: 100%;
+}
+
+section .container .signinBx .imgBx {
+  left: 0%;
+}
+
+section .container.active .signinBx .imgBx {
+  left: -100%;
+}
+
+@media (max-width: 991px) {
+  section .container {
+    max-width: 400px;
+  }
+
+  section .container .imgBx {
+    display: none;
+  }
+
+  section .container .user .formBx {
+    width: 100%;
+  }
+}
+.footer {
+  text-align: center;
+}
+
+#registration_form_agreeTerms {
+  width: 7%;
+}
+
+.required {
+  font-size: 0.8rem;
+  color: gray;
+}
+
+.mb-3 {
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 2.8vh;
+  padding-right: 3vw;
+}
+.mb-3 a {
+  color: rgba(250, 25, 25, 0.673);
+  font-weight: bold;
+}
+
+.backgroundModif {
+  width: 100vw;
+  background-image: url("../images/filamentPng.png");
+  background-position: top;
+}
+
+.ModifUser {
+  text-align: center;
+  color: white;
+}
+
+.container {
+  width: 100vw;
+  padding: 5vh;
+}
+.container .InputModif {
+  width: 50%;
+  text-align: center;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.666);
+  border-radius: 30px;
+  padding: 10vh;
+}
+.container .InputModif .formModif {
+  margin: 0 auto;
+  text-align: center;
+}
+.container .InputModif .formModif .col-12 {
+  padding: 2vh;
+}
+.container .InputModif .formModif .col-12 .input {
+  width: 80%;
+}
+.container .InputModif .formModif .col-12 .changeAvatar {
+  margin: 0 auto;
+  width: 100%;
+  border-radius: 20px;
+  padding: 5vh;
+}
+.container .InputModif .formModif .col-12 .changeAvatar p {
+  font-weight: bold;
+  color: white;
+}
+.container .InputModif .button {
+  margin-bottom: 1vh;
+  width: 80%;
+  color: white;
+  background-color: #D112FF;
+}
+.container .InputModif .buttonDelete {
+  width: 80%;
+  color: white;
+  background-color: #4D4EFF;
+  margin-bottom: 5vh;
+}
+.container .InputModif .retour {
+  margin-top: 3vh;
+  color: white;
+  font-weight: bold;
+}
+
+.BackModiFichier {
+  text-align: center;
+  width: 100vw;
+  background-image: url("../images/filamentPng.png");
+  background-position: top;
+}
+.BackModiFichier .ModifFichier {
+  width: 40%;
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.666);
+  border-radius: 20px;
+  margin: 5vh auto;
+}
+.BackModiFichier .ModifFichier .form {
+  margin-top: 5vh;
+  padding: 5vh;
+}
+.BackModiFichier .ModifFichier .form .Depot h1 {
+  color: white;
+  font-size: 2rem;
+}
+.BackModiFichier .ModifFichier .form .Depot .text {
+  margin: 4vh;
+  font-size: 0.8rem;
+  color: white;
+}
+.BackModiFichier .ModifFichier .form .Depot .text .CategorieLabel {
+  font-size: 0.8rem;
+  color: white;
+  font-weight: bold;
+}
+.BackModiFichier .ModifFichier .form .Depot .textArea {
+  height: 20%;
+  width: 80%;
+}
+.BackModiFichier .ModifFichier .form .Depot p {
+  color: white;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+.BackModiFichier .ModifFichier .form .Depot .mb-3 {
+  padding-top: 0vh;
+  padding-right: 0vw;
+}
+.BackModiFichier .ModifFichier .form .Depot .File {
+  margin: auto;
+  width: 80%;
+  background-color: #d07affb9;
+  padding: 2%;
+}
+.BackModiFichier .ModifFichier .form .Depot .File .GetFile {
+  color: white;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-decoration: underline;
+}
+.BackModiFichier .ModifFichier .form .Depot .Image {
+  margin: 0 auto;
+  width: 80%;
+  background-color: #1814ffa1;
+  padding: 2%;
+}
+.BackModiFichier .ModifFichier .form .Depot .Image .GetImage {
+  color: white;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-decoration: underline;
+}
+.BackModiFichier .ModifFichier .form .Depot #avatar {
+  width: 10vw;
+}
+.BackModiFichier .ModifFichier .form .Depot .conditions {
+  margin: 5vh;
+  font-size: 0.8rem;
+  color: white;
+  font-weight: bold;
+}
+.BackModiFichier .ModifFichier .form a {
+  color: white;
+  font-weight: bold;
+}
+
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.glowButton {
+  animation: fadeInAnimation ease 3s;
+  margin: 10vh auto;
+  position: relative;
+  margin: 10vh auto;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  font-size: 1rem;
+  line-height: 3rem;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: linear-gradient(160deg, #ff9100, #e8ec00);
+  border-radius: 20px;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 0 0 0 #e8ec00, 0.5rem 0.5rem 30px #807c02;
+  transition: box-shadow 0.6s;
+}
+.glowButton:hover {
+  box-shadow: 0 0 60px 2px #e8ec00, 0.5rem 0.5rem 30px #807c02;
+}
+.glowButton:after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  bottom: 2px;
+  left: 2px;
+  border-radius: 30px;
+  background-image: linear-gradient(170deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+.fa {
+  font-size: 50px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fa:hover {
+  color: darkblue;
+}
+
+body {
+  width: 100vw;
+  height: auto;
+  overflow-x: hidden;
+  font-family: "Dosis", sans-serif;
+}
+
+.navbar {
+  height: 7vh;
+  max-width: 100vw;
+}
+.navbar a {
+  font-size: 1rem;
+}
+.navbar .Avatar {
+  width: 120%;
+  padding-bottom: 1vw;
+}
+
+.footer {
+  height: auto;
+  background-color: black;
+}
+.footer .logo {
+  width: 10%;
+}
+.footer h1 {
+  color: white;
+  padding-top: 2%;
+  font-size: 0.7rem;
+}
+
+.pagination {
+  margin: 0 auto;
+  padding-bottom: 3vh;
+}
+
+.Accueil {
+  height: 100vh;
+  text-align: center;
+}
+.Accueil .Jlayers {
+  width: 100vw;
+  height: 100%;
+  background-image: url("../images/bibli.webp");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.Accueil .Jlayers h1 {
+  padding-top: 10%;
+  font-size: 10vw;
+  color: white;
+  text-shadow: 4px -2px 4px black;
+  animation: fadeInAnimation ease 3s;
+}
+.Accueil .Presentation {
+  width: 70%;
+  height: auto;
+  margin: 0 auto;
+}
+.Accueil .Presentation h1 {
+  padding-top: 4vh;
+  font-size: 2rem;
+}
+.Accueil .Presentation p {
+  margin: 8%;
+  font-size: 0.9rem;
+}
+.Accueil .row {
+  width: 100%;
+  height: 60vh;
+}
+.Accueil .row .PLA {
+  height: 60vh;
+  width: 50%;
+  position: relative;
+  background-image: url("../images/Formlabs_1.jpg");
+  background-size: cover;
+  background-position: center;
+  border-right: 3px solid black;
+}
+.Accueil .row .PLA .insidePLA {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+}
+.Accueil .row .PLA .insidePLA .btn {
+  margin-top: 20%;
+  padding: 2%;
+  font-size: 150%;
+}
+.Accueil .row .Resine {
+  height: 60vh;
+  width: 50%;
+  position: relative;
+  background-image: url("../images/Formlabs_1 (1).jpg");
+  background-size: cover;
+  background-position: center;
+}
+.Accueil .row .Resine .insideResine {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+}
+.Accueil .row .Resine .insideResine .btn {
+  margin-top: 20%;
+  padding: 2%;
+  font-size: 150%;
+}
+.Accueil .FichierSTL {
+  width: 70%;
+  height: auto;
+  margin: 0 auto;
+}
+.Accueil .FichierSTL h1 {
+  padding-top: 4vh;
+}
+.Accueil .FichierSTL p {
+  margin: 8%;
+}
+
+.ImpressionFIl {
+  height: 100vh;
+  text-align: center;
+}
+.ImpressionFIl .QlqPla {
+  width: 100vw;
+  height: 100vh;
+}
+.ImpressionFIl .QlqPla .video-background {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: auto;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  z-index: -1;
+}
+.ImpressionFIl .QlqPla h1 {
+  padding-top: 20vh;
+  font-size: 5vw;
+  color: white;
+}
+.ImpressionFIl .Fonctionnement {
+  width: 70%;
+  height: auto;
+  margin: 0 auto;
+}
+.ImpressionFIl .Fonctionnement h1 {
+  padding-top: 1vh;
+}
+.ImpressionFIl .Fonctionnement p {
+  margin: 5%;
+  font-size: 1rem;
+}
+.ImpressionFIl .card-group .card-img-top {
+  max-width: 70%;
+  margin: 5% auto;
+}
+.ImpressionFIl .card-group .card .card-body {
+  padding-bottom: 5%;
+}
+.ImpressionFIl .card-group .card .card-body h5 {
+  font-size: 1.5rem;
+}
+.ImpressionFIl .card-group .card .card-body p {
+  font-size: 0.8rem;
+  width: 50%;
+  margin: 0 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.ImpressionFIl .ProduitPla {
+  height: 60vh;
+  margin: 0 auto;
+  background-image: url("../images/bobines.webp");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.ImpressionFIl .ProduitPla h1 {
+  font-weight: bold;
+  color: white;
+  font-size: 4vw;
+  padding-top: 17vh;
+}
+
+.ImpressionRes {
+  height: 100vh;
+  text-align: center;
+}
+.ImpressionRes .QlqPla {
+  width: 100vw;
+  height: 100vh;
+}
+.ImpressionRes .QlqPla .video-background {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: auto;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  z-index: -1;
+}
+.ImpressionRes .QlqPla h1 {
+  padding-top: 20vh;
+  font-size: 5vw;
+  color: white;
+}
+.ImpressionRes .Fonctionnement {
+  width: 70%;
+  height: auto;
+  margin: 0 auto;
+}
+.ImpressionRes .Fonctionnement h1 {
+  padding-top: 1vh;
+}
+.ImpressionRes .Fonctionnement p {
+  margin: 5%;
+  font-size: 1rem;
+}
+.ImpressionRes .card-group .card-img-top {
+  width: 60%;
+  margin: 5% auto;
+}
+.ImpressionRes .card-group .card .card-body {
+  padding-bottom: 5%;
+}
+.ImpressionRes .card-group .card .card-body h5 {
+  font-size: 1.5rem;
+}
+.ImpressionRes .card-group .card .card-body p {
+  font-size: 0.8rem;
+  width: 50%;
+  margin: 0 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.ImpressionRes .ProduitPla {
+  height: 60vh;
+  margin: 0 auto;
+  background-image: url("../images/impressionresine.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.ImpressionRes .ProduitPla h1 {
+  font-weight: bold;
+  color: black;
+  font-size: 4vw;
+  padding-top: 17vh;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.Bibliotheque {
+  text-align: center;
+  background-color: #f3e2a3;
+}
+.Bibliotheque .STL {
+  height: 50%;
+  background-image: url("../images/carouStl1.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: top;
+}
+.Bibliotheque .STL h1 {
+  padding: 6%;
+  font-size: 4vw;
+  color: white;
+  animation: fadeInAnimation ease 3s;
+}
+.Bibliotheque .Search {
+  padding: 2%;
+  height: auto;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+}
+.Bibliotheque .Search .row {
+  width: 80%;
+  vertical-align: middle;
+  margin: 2% auto;
+}
+.Bibliotheque .Search .row .inputSearch {
+  display: flex;
+  flex-direction: row;
+}
+.Bibliotheque .Search .row .inputSearch .form-control {
+  width: 100%;
+}
+.Bibliotheque .card-group {
+  width: 90vw;
+  margin: 0 auto;
+}
+.Bibliotheque .card-group .row {
+  justify-content: space-between;
+}
+.Bibliotheque .card-group .row .card {
+  width: 23%;
+  margin: 2% auto;
+  padding: 0;
+  transition: transform 2s;
+}
+.Bibliotheque .card-group .row .card .card-body .card-title {
+  font-size: 1.1vw;
+  font-weight: bold;
+}
+.Bibliotheque .card-group .row .card .card-body .card-text {
+  font-size: 0.8vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.Bibliotheque .card-group .row .card .card-body .likeBibli {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 18%;
+}
+.Bibliotheque .card-group .row .card .card-body .likeBibli .nbrLikeCard {
+  padding: 2%;
+  font-size: 0.8vw;
+}
+.Bibliotheque .card-group .row .card .card-body .likeBibli .heartCard {
+  width: 7%;
+}
+.Bibliotheque .card-group .row .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
+
+.Login {
+  overflow-y: hidden;
+  width: 100vw;
+}
+
+.FichierSTl {
+  height: auto;
+  background-color: #F3E2A3;
+}
+.FichierSTl .viewer {
+  padding: 0 !important;
+  margin: 0 auto;
+  justify-content: center;
+}
+.FichierSTl .viewer .titleStl {
+  position: absolute;
+  z-index: 1;
+  top: 20%;
+  left: 10%;
+  font-weight: bold;
+  font-family: "Dosis", sans-serif;
+  font-size: 4vw;
+  color: white;
+  position: absolute;
+  text-shadow: rgba(255, 255, 255, 0.419) 2px 5px;
+}
+.FichierSTl .babylonjs-canvas {
+  height: 570px !important;
+}
+.FichierSTl .OneSTL {
+  height: auto;
+  width: 80%;
+  margin: 0 auto;
+  padding: 3%;
+}
+.FichierSTl .OneSTL .PhotoLikeDownload {
+  margin-top: 6%;
+  padding: 3%;
+}
+.FichierSTl .OneSTL .PhotoLikeDownload .col-8 {
+  padding: 0 !important;
+}
+.FichierSTl .OneSTL .PhotoLikeDownload .col-4 {
+  background-color: rgba(119, 119, 119, 0.357);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.FichierSTl .OneSTL .PhotoLikeDownload .imagefichier {
+  display: flex;
+  width: 100%;
+}
+.FichierSTl .OneSTL .PhotoLikeDownload .imagefichier .imageFichierSTL {
+  width: 100%;
+  margin: 0 auto;
+  animation: fadeInAnimation ease 3s;
+  animation-duration: ease 5s;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.FichierSTl .OneSTL .PhotoLikeDownload .imagefichier .Viensde {
+  background-color: rgba(119, 119, 119, 0.357);
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1%;
+  width: 15%;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+.FichierSTl .OneSTL .PhotoLikeDownload .imagefichier .Viensde .PhotoSource {
+  width: 15%;
+  border-radius: 10%;
+}
+.FichierSTl .OneSTL .PhotoLikeDownload .imagefichier .Viensde h2 {
+  margin-left: 5%;
+  font-size: 80%;
+  color: black;
+  font-weight: bold;
+}
+.FichierSTl .OneSTL .Author .Like {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+}
+.FichierSTl .OneSTL .Author .Like .NbrLike {
+  font-size: 80%;
+  font-weight: bold;
+  color: red;
+}
+.FichierSTl .OneSTL .containerComment {
+  width: 100%;
+  background-attachment: fixed;
+  /* Chrome, Edge, and Safari */
+}
+.FichierSTl .OneSTL .containerComment * {
+  scrollbar-width: thin;
+  scrollbar-color: #8c330d #c6bb96;
+}
+.FichierSTl .OneSTL .containerComment *::-webkit-scrollbar {
+  width: 8px;
+}
+.FichierSTl .OneSTL .containerComment *::-webkit-scrollbar-track {
+  background: #c6bb96;
+}
+.FichierSTl .OneSTL .containerComment *::-webkit-scrollbar-thumb {
+  background-color: #8c330d;
+  border-radius: 10px;
+  border: 0px none #ffffff;
+}
+.FichierSTl .OneSTL .containerComment .commentExist {
+  margin: 0 auto;
+  display: flex;
+  padding-top: 5%;
+  max-height: 324px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.FichierSTl .OneSTL .containerComment .commentExist .affichageComment {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  padding: 2%;
+}
+.FichierSTl .OneSTL .containerComment .commentExist .affichageComment .imageUserComment {
+  width: 20%;
+  border-radius: 50%;
+}
+.FichierSTl .OneSTL .containerComment .commentExist .affichageComment .row {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 10%;
+}
+.FichierSTl .OneSTL .containerComment .commentExist .affichageComment .row .col-6 {
+  width: 100%;
+}
+.FichierSTl .OneSTL .containerComment .commentExist .affichageComment .row .col-6 .nomUserCommentaire {
+  margin-bottom: 0% !important;
+  font-weight: bold;
+  color: #0c0c0c;
+}
+.FichierSTl .OneSTL .containerComment .commentExist .affichageComment .row .col-6 .commentUser {
+  font-size: 70%;
+  font-weight: bold;
+  color: #070707;
+}
+.FichierSTl .OneSTL .containerComment .voteComment {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2%;
+}
+.FichierSTl .OneSTL .containerComment .voteComment .inputCommentaire .submitComment {
+  background-color: transparent;
+  border: none;
+}
+.FichierSTl .OneSTL .containerComment .voteComment .inputCommentaire #commentaires_commentaire {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.391);
+  border: none;
+}
+.FichierSTl .OneSTL .containerComment .voteComment .inputCommentaire form {
+  display: flex;
+  align-items: center;
+}
+.FichierSTl .OneSTL .containerComment .messageComm {
+  width: 50%;
+  margin: 0 auto;
+}
+.FichierSTl .OneSTL .containerComment .messageComm .alert {
+  font-size: 80%;
+  text-align: center;
+}
+.FichierSTl .OneSTL .download {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.FichierSTl .OneSTL .download .downloadFiles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2%;
+}
+.FichierSTl .OneSTL .download .DownloadText {
+  font-size: 80%;
+  font-weight: bold;
+  color: #d67206;
+}
+.FichierSTl .OneSTL .TitreDescAvatar {
+  padding: 5%;
+  text-align: center;
+}
+.FichierSTl .OneSTL .TitreDescAvatar h1 {
+  font-size: 90%;
+  font-weight: bold;
+}
+.FichierSTl .OneSTL .TitreDescAvatar p {
+  font-size: 70%;
+  height: auto;
+}
+.FichierSTl .impressionSimilaire {
+  background-image: url("../images/silk-background-orange-fabric.jpg");
+  background-attachment: fixed;
+  padding: 3%;
+  margin-top: 5%;
+}
+.FichierSTl .impressionSimilaire .cardStl h1 {
+  font-weight: bold;
+  font-family: "Dosis", sans-serif;
+  font-size: 4vw;
+  text-align: center;
+  color: white;
+}
+.FichierSTl .impressionSimilaire .cardStl .row {
+  padding: 2%;
+  display: flex;
+  justify-content: center;
+}
+.FichierSTl .impressionSimilaire .cardStl .row .card {
+  width: 80%;
+  transition: transform 2s;
+}
+.FichierSTl .impressionSimilaire .cardStl .row .card .card-body .card-title {
+  font-size: 1.1vw;
+  font-weight: bold;
+}
+.FichierSTl .impressionSimilaire .cardStl .row .card .card-body .card-text {
+  font-size: 0.8vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.FichierSTl .impressionSimilaire .cardStl .row .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+}
+
+.Users {
+  text-align: center;
+  width: 100vw;
+  background-image: url("../images/filamentPng.png");
+  background-position: top;
+}
+.Users .Avatar {
+  padding-top: 10vh;
+  padding-bottom: 7vh;
+}
+.Users .Avatar .AvatarUser {
+  width: 12%;
+  border-radius: 50%;
+  margin-bottom: 3vh;
+}
+.Users .Avatar .modifProfil {
+  color: black;
+  font-weight: bold;
+}
+.Users .Fichiers {
+  width: 90%;
+  margin: 0 auto;
+  height: auto;
+}
+.Users .Fichiers .Depot {
+  padding: 5vh;
+}
+.Users .Fichiers .Depot h1 {
+  font-size: 2rem;
+}
+.Users .Fichiers .Depot .text {
+  margin: 4vh;
+  font-size: 0.8rem;
+  color: #3c3c3c;
+}
+.Users .Fichiers .Depot .text .CategorieLabel {
+  font-size: 0.8rem;
+  color: #3c3c3c;
+  font-weight: bold;
+}
+.Users .Fichiers .Depot .textArea {
+  height: 20%;
+  width: 80%;
+}
+.Users .Fichiers .Depot .mb-3 {
+  padding-top: 0vh;
+  padding-right: 0vw;
+}
+.Users .Fichiers .Depot .File {
+  margin: auto;
+  width: 80%;
+  background-color: #d07aff80;
+  padding: 2%;
+}
+.Users .Fichiers .Depot .File .GetFile {
+  font-size: 0.8rem;
+  text-decoration: underline;
+}
+.Users .Fichiers .Depot .Image {
+  margin: 0 auto;
+  width: 80%;
+  background-color: #1814ff82;
+  padding: 2%;
+}
+.Users .Fichiers .Depot .Image .GetImage {
+  font-size: 0.8rem;
+  text-decoration: underline;
+}
+.Users .Fichiers .Depot #avatar {
+  width: 10vw;
+}
+.Users .Fichiers .Depot .conditions {
+  margin: 5vh;
+  font-size: 0.8rem;
+  color: #3c3c3c;
+  font-weight: bold;
+}
+.Users .Fichiers .accordion {
+  width: 50%;
+  margin: 0 auto;
+  padding-bottom: 8vh;
+}
+.Users .Fichiers .accordion .accordion-body {
+  padding: 0rem 3.25rem;
+}
+.Users .Fichiers .accordion .accordion-body .Gerer {
+  padding: 2%;
+  border-radius: 10px;
+  border-bottom: 1px solid black;
+}
+.Users .Fichiers .accordion .accordion-body .Gerer .FichierUser {
+  height: auto;
+  width: 100%;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+}
+.Users .Fichiers .accordion .accordion-body .Gerer .FichierUser .col-3 {
+  vertical-align: middle;
+}
+.Users .Fichiers .accordion .accordion-body .Gerer .FichierUser .col-3 img {
+  width: 60%;
+}
+.Users .Fichiers .accordion .CommentaireUser {
+  height: auto;
+  width: 100%;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  border-bottom: 1px solid black;
+}
+.Users .Fichiers .accordion .CommentaireUser .col-3 {
+  vertical-align: middle;
+  padding: 2%;
+}
+.Users .Fichiers .accordion .CommentaireUser .col-3 h1 {
+  font-size: 1rem;
+}
+.Users .Fichiers .accordion .CommentaireUser .col-3 p {
+  font-size: 0.7rem;
+}
+.Users .Fichiers .accordion .CommentaireUser .col-3 .imageCom {
+  width: 55%;
+}
+
+.formVote {
+  width: 20%;
+}
+.formVote label {
+  display: none;
+}
+
+/*# sourceMappingURL=styles.css.map */

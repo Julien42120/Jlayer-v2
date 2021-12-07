@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit CategoryFichier{% endblock %}
+
+{% block body %}
+    <h1>Edit CategoryFichier</h1>
+
+    {{ include('category_fichier/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('category_fichier_index') }}">back to list</a>
+
+    {{ include('category_fichier/_delete_form.html.twig') }}
+{% endblock %}
