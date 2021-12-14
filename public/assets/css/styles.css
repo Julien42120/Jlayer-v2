@@ -279,6 +279,11 @@ section .container.active .signinBx .imgBx {
   color: white;
 }
 
+@media only screen and (max-width: 800px) {
+  .InputModif {
+    width: 100%;
+  }
+}
 .container {
   width: 100vw;
   padding: 5vh;
@@ -473,7 +478,7 @@ body {
 }
 
 .navbar {
-  height: 7vh;
+  height: 40px;
   max-width: 100vw;
 }
 .navbar a {
@@ -484,6 +489,23 @@ body {
   padding-bottom: 1vw;
 }
 
+@media only screen and (max-width: 800px) {
+  .navbar {
+    height: 50px;
+    max-width: 100vw;
+  }
+  .navbar a {
+    font-size: 1rem;
+    position: absolute;
+    top: 16%;
+  }
+  .navbar .Avatar {
+    width: 120%;
+    position: absolute;
+    top: -40%;
+    left: 335%;
+  }
+}
 .footer {
   height: auto;
   background-color: black;
@@ -517,6 +539,12 @@ body {
 .Accueil .Jlayers h1 {
   padding-top: 10%;
   font-size: 10vw;
+  color: white;
+  text-shadow: 4px -2px 4px black;
+  animation: fadeInAnimation ease 3s;
+}
+.Accueil .Jlayers .sousTitre {
+  font-size: 2vw;
   color: white;
   text-shadow: 4px -2px 4px black;
   animation: fadeInAnimation ease 3s;
@@ -555,7 +583,7 @@ body {
 .Accueil .row .PLA .insidePLA .btn {
   margin-top: 20%;
   padding: 2%;
-  font-size: 150%;
+  font-size: 100%;
 }
 .Accueil .row .Resine {
   height: 60vh;
@@ -573,7 +601,7 @@ body {
 .Accueil .row .Resine .insideResine .btn {
   margin-top: 20%;
   padding: 2%;
-  font-size: 150%;
+  font-size: 100%;
 }
 .Accueil .FichierSTL {
   width: 70%;
@@ -608,8 +636,8 @@ body {
   z-index: -1;
 }
 .ImpressionFIl .QlqPla h1 {
-  padding-top: 20vh;
-  font-size: 5vw;
+  margin: 14% auto;
+  font-size: 6vw;
   color: white;
 }
 .ImpressionFIl .Fonctionnement {
@@ -655,8 +683,8 @@ body {
 .ImpressionFIl .ProduitPla h1 {
   font-weight: bold;
   color: white;
-  font-size: 4vw;
-  padding-top: 17vh;
+  font-size: xxx-large;
+  padding-top: 10vh;
 }
 
 .ImpressionRes {
@@ -680,8 +708,8 @@ body {
   z-index: -1;
 }
 .ImpressionRes .QlqPla h1 {
-  padding-top: 20vh;
-  font-size: 5vw;
+  margin: 14% auto;
+  font-size: 6vw;
   color: white;
 }
 .ImpressionRes .Fonctionnement {
@@ -727,8 +755,9 @@ body {
 .ImpressionRes .ProduitPla h1 {
   font-weight: bold;
   color: black;
-  font-size: 4vw;
-  padding-top: 17vh;
+  font-weight: bold;
+  font-size: xxx-large;
+  padding-top: 10vh;
 }
 
 @keyframes fadeInAnimation {
@@ -752,7 +781,7 @@ body {
 }
 .Bibliotheque .STL h1 {
   padding: 6%;
-  font-size: 4vw;
+  font-size: 5vw;
   color: white;
   animation: fadeInAnimation ease 3s;
 }
@@ -766,14 +795,17 @@ body {
 .Bibliotheque .Search .row {
   width: 80%;
   vertical-align: middle;
-  margin: 2% auto;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
 }
 .Bibliotheque .Search .row .inputSearch {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 .Bibliotheque .Search .row .inputSearch .form-control {
-  width: 100%;
+  width: 50%;
 }
 .Bibliotheque .card-group {
   width: 90vw;
@@ -783,17 +815,17 @@ body {
   justify-content: space-between;
 }
 .Bibliotheque .card-group .row .card {
-  width: 23%;
   margin: 2% auto;
+  margin-bottom: 15%;
   padding: 0;
   transition: transform 2s;
 }
 .Bibliotheque .card-group .row .card .card-body .card-title {
-  font-size: 1.1vw;
+  font-size: 140%;
   font-weight: bold;
 }
 .Bibliotheque .card-group .row .card .card-body .card-text {
-  font-size: 0.8vw;
+  font-size: 85%;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -808,10 +840,10 @@ body {
 }
 .Bibliotheque .card-group .row .card .card-body .likeBibli .nbrLikeCard {
   padding: 2%;
-  font-size: 0.8vw;
+  font-size: 1rem;
 }
 .Bibliotheque .card-group .row .card .card-body .likeBibli .heartCard {
-  width: 7%;
+  width: 13%;
 }
 .Bibliotheque .card-group .row .card:hover {
   transform: scale(1.05);
@@ -961,12 +993,12 @@ body {
 .FichierSTl .OneSTL .containerComment .commentExist .affichageComment .row .col-6 .nomUserCommentaire {
   margin-bottom: 0% !important;
   font-weight: bold;
-  color: #0c0c0c;
+  color: #353535;
 }
 .FichierSTl .OneSTL .containerComment .commentExist .affichageComment .row .col-6 .commentUser {
   font-size: 70%;
   font-weight: bold;
-  color: #070707;
+  color: #5e5e5e;
 }
 .FichierSTl .OneSTL .containerComment .voteComment {
   width: 100%;
@@ -1024,7 +1056,8 @@ body {
   height: auto;
 }
 .FichierSTl .impressionSimilaire {
-  background-image: url("../images/silk-background-orange-fabric.jpg");
+  background-image: url("../images/silkblack.jpg");
+  background-size: cover;
   background-attachment: fixed;
   padding: 3%;
   margin-top: 5%;
@@ -1140,7 +1173,7 @@ body {
   font-weight: bold;
 }
 .Users .Fichiers .accordion {
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
   padding-bottom: 8vh;
 }
@@ -1193,6 +1226,14 @@ body {
 }
 .formVote label {
   display: none;
+}
+
+.Error {
+  background-color: red;
+}
+.Error .container {
+  width: 60%;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=styles.css.map */

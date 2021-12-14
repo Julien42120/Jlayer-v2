@@ -57,7 +57,7 @@
 						<div class="commentExist row">
 							{% for commentaireById in commentaireById %}
 								<div class="affichageComment col-12">
-									<img class="imageUserComment" src="{{ asset ('assets/upload/photosUsers/' ~ commentaireById.user.avatar)}}"/>
+									<img class="imageUserComment" src="{{ asset ('assets/upload/photosUsers/' ~ commentaireById.user.avatar )}}" alt="{{commentaireById.user.pseudo}}"/>
 									<div class="row">
 										<div class="col-6">
 											<p class="nomUserCommentaire">{{commentaireById.user.pseudo}}</p>
@@ -69,8 +69,6 @@
 								</div>
 							{% endfor %}
 						</div>
-						<div class="formComment"></div>
-
 						<div class="voteComment">
 							{{ include('commentaires/_form.html.twig') }}
 						</div>
@@ -88,7 +86,7 @@
 				{% for fichierSTL in fichierSTL.fichierSTL %}
 					<a class="downloadFiles" href="{{ asset ('assets/upload/FichierSTL/' ~ fichierSTL )}}" download class="btn">
 						<i class="fa fa-download" style='font-size:30px;color:#C94114'></i>
-						<p class="DownloadText">Download</p>
+						<p class="DownloadText">Télécharger</p>
 					</a>
 				{% endfor %}
 			</div>
@@ -103,10 +101,10 @@
 							<div class="col-3">
 								<div class="card">
 									<a href="{{ path ('fichiers_show', {id : produitSimilaire.id})}}">
-										<img src="{{ asset ('assets/upload/images/' ~ produitSimilaire.images)}}" class="card-img-top" alt="...">
+										<img src="{{ asset ('assets/upload/images/' ~ produitSimilaire.images)}}" class="card-img-top" alt="{{produitSimilaire.nom}}">
 									</a>
 									<div class="card-body">
-										<h5 class="card-title">{{produitSimilaire.nom}}</h5>
+										<p class="card-title fs-5">{{produitSimilaire.nom}}</p>
 										<p class="card-text">{{produitSimilaire.description}}</p>
 
 									</div>

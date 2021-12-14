@@ -10,10 +10,16 @@
    
 }
 
+@media only screen and (max-width: 800px) {
+    .InputModif{
+       width: 100%;
+    }
+}
 .container{
     width: 100vw;
     padding: 5vh;
-     
+    
+
     .InputModif{
         width: 50%;
         text-align: center;
@@ -21,6 +27,7 @@
        background-color: rgba(0, 0, 0, 0.666);
        border-radius: 30px;
        padding: 10vh ;
+       
 
         .formModif{
           

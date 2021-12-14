@@ -1,0 +1,99 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block main %}
+
+	<style>
+		.content-header {
+			display: none;
+		}
+		.content-wrapper {
+			width: 100%;
+			background-image: url('https://images.pexels.com/photos/403575/pexels-photo-403575.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+			background-size: cover;
+		}
+		.content {
+			margin-top: 5%;
+			text-align: center;
+		}
+		.commentContainer {
+			background-color: rgba(169, 169, 169, 0.4);
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			margin: 1%;
+			padding: 0;
+			border-radius: 10px;
+		}
+		.sur {
+			padding: 0;
+			margin: auto;
+		}
+		h1 {
+			font-weight: bold;
+			font-size: 3rem;
+			margin-bottom: 5%;
+		}
+		.adminImg {
+			width: 100%;
+			border-top-left-radius: 10px;
+		}
+		.adminFichier {
+			width: 100%;
+			border-top-right-radius: 10px;
+		}
+		.comdelete {
+			background-color: #AB0104;
+			border: none;
+			padding: 2%;
+			border-bottom-right-radius: 10px;
+			border-bottom-left-radius: 10px;
+			width: 77%;
+			color: white;
+		}
+		p {
+			margin-top: 5%;
+			height: -webkit-fill-available;
+			font-weight: 500;
+		}
+		.col-4 {
+			padding-right: 0;
+		}
+		.AvatarFichier {
+			display: flex;
+			flex-direction: row;
+		}
+		form {
+			width: 130%;
+		}
+	</style>
+
+	<div class="container">
+		<div class="row">
+			<div class="content">
+				<h1 class="Commentaires">Commentaires par fichiers</h1>
+			</div>
+			{% for AllComment in AllComments %}
+				<div class="col-2 commentContainer">
+					<div class="row AvatarFichier">
+						<div class="col-5">
+							<img class="adminImg" src="{{ asset ('assets/upload/photosUsers/' ~ AllComment.user.avatar)}}">
+						</div>
+						<div class="col-2 sur">
+							<p>Sur :</p>
+						</div>
+						<div class="col-5">
+							<img class="adminFichier" src="{{ asset ('assets/upload/images/' ~ AllComment.user.avatar)}}">
+						</div>
+					</div>
+					<p>{{AllComment.commentaire}}</p>
+					<form method="post" action="{{ path('admin_commentaires_delete', {'id': AllComment.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+						<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ AllComment.id) }}">
+						<button class="comdelete">Supprimer</button>
+					</form>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

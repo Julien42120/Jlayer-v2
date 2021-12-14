@@ -27,3 +27,5 @@ function ajaxLiked(idFichier) {
             divLike.innerHTML = `<p>${data.voteTotal} Likes</p>`
         })
 }
+
+

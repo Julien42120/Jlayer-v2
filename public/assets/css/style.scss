@@ -15,7 +15,7 @@ body{
 }
 
 .navbar{
-    height: 7vh;
+    height: 40px;
     max-width: 100vw;
     a{
         font-size: 1rem;
@@ -25,6 +25,24 @@ body{
         padding-bottom: 1vw;
     }
 }
+
+@media only screen and (max-width: 800px) {
+    .navbar{
+        height: 50px;
+        max-width: 100vw;
+        a{
+            font-size: 1rem;
+            position: absolute;
+            top: 16%;
+        }
+        .Avatar{
+            width: 120%;
+            position: absolute;
+            top: -40%;
+            left: 335%;
+        }
+    }
+  }
 
 .footer{
     height:auto;
@@ -59,6 +77,12 @@ body{
         h1{
             padding-top:10%;
             font-size: 10vw;
+            color: white;
+            text-shadow: 4px -2px 4px rgb(0, 0, 0);
+            animation: fadeInAnimation ease 3s
+        }
+        .sousTitre{
+            font-size: 2vw;
             color: white;
             text-shadow: 4px -2px 4px rgb(0, 0, 0);
             animation: fadeInAnimation ease 3s
@@ -100,7 +124,7 @@ body{
                 .btn {
                     margin-top: 20%;
                     padding: 2%;
-                    font-size: 150%;
+                    font-size: 100%;
                 }
             }
         }
@@ -121,7 +145,7 @@ body{
                 .btn {
                     margin-top: 20%;
                     padding: 2%;
-                    font-size: 150%;
+                    font-size: 100%;
                    
                 }
             }
@@ -161,8 +185,8 @@ body{
             z-index: -1;
           }
         h1{
-            padding-top:20vh;
-            font-size: 5vw;
+            margin: 14% auto;
+            font-size: 6vw;
             color: white;  
         }
     }
@@ -215,8 +239,8 @@ body{
         h1{
             font-weight: bold;
             color: white;
-            font-size: 4vw;
-            padding-top: 17vh;
+            font-size: xxx-large;
+            padding-top: 10vh;
         }   
     }
 }
@@ -241,8 +265,8 @@ body{
             z-index: -1;
           }
         h1{
-            padding-top:20vh;
-            font-size: 5vw;
+            margin: 14% auto;
+            font-size: 6vw;
             color: white;  
         }
     }
@@ -295,8 +319,9 @@ body{
         h1{
             font-weight: bold;
             color: rgb(0, 0, 0);
-            font-size: 4vw;
-            padding-top: 17vh;
+            font-weight: bold;
+            font-size: xxx-large;
+            padding-top: 10vh;
         }   
     }
    
@@ -324,7 +349,7 @@ body{
 
         h1{
             padding:6%;
-            font-size: 4vw;
+            font-size: 5vw;
             color: rgb(255, 255, 255);
             animation: fadeInAnimation ease 3s
         }
@@ -339,13 +364,16 @@ body{
         .row{
             width: 80%;
             vertical-align: middle;
-            margin: 2% auto;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
         
             .inputSearch{
                 display: flex;
                 flex-direction: row;
+                justify-content: center;
                 .form-control{
-                    width: 100%;
+                    width: 50%;
                 }
             }
         }
@@ -357,17 +385,18 @@ body{
         .row{
             justify-content: space-between;
             .card{
-                width: 23%;
+                
                 margin: 2% auto;
+                margin-bottom: 15%;
                 padding: 0;
                 transition: transform 2s;
                 .card-body{
                     .card-title{
-                        font-size: 1.1vw;
+                        font-size:140%;
                         font-weight: bold;
                     }
                     .card-text{
-                        font-size: 0.8vw;
+                        font-size: 85%;
                         overflow: hidden;
                         text-overflow: ellipsis;
                         display: -webkit-box;
@@ -381,11 +410,10 @@ body{
                         height: 18%;
                         .nbrLikeCard{
                             padding: 2%;
-                            font-size: 0.8vw;
+                            font-size: 1rem;
                         }
                         .heartCard{
-
-                            width: 7%;
+                            width: 13%;
                         }
                     }
                 }
@@ -423,7 +451,6 @@ body{
                 color: white;
                 position: absolute;
                 text-shadow: rgba(255, 255, 255, 0.419) 2px 5px;
-
             }
         }
     
@@ -553,12 +580,12 @@ body{
                             .nomUserCommentaire{
                                 margin-bottom: 0% !important;
                                 font-weight: bold;
-                                color: rgb(12, 12, 12);
+                                color: rgb(53, 53, 53);
                             }
                             .commentUser{
                                 font-size: 70%;
                                 font-weight: bold;
-                                color: rgb(7, 7, 7);
+                                color: rgb(94, 94, 94);
                             }
                         }
                     }
@@ -628,7 +655,8 @@ body{
         
     }
     .impressionSimilaire{
-        background-image: url('../images/silk-background-orange-fabric.jpg');
+        background-image: url('../images/silkblack.jpg');
+        background-size: cover;
         background-attachment: fixed;
         padding: 3%;
         margin-top: 5%;
@@ -758,7 +786,7 @@ body{
         }
     
         .accordion{
-            width: 50%;
+            width: 100%;
             margin: 0 auto;
             padding-bottom: 8vh;
             .accordion-body{
@@ -820,4 +848,15 @@ body{
     label{
 
         display: none;}
+}
+
+///// ERROR /////
+
+.Error{
+    background-color: rgb(255, 0, 0);
+    .container{
+        width: 60%;
+        margin: 0 auto;
+
+    }
 }

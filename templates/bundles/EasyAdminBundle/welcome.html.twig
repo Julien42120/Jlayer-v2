@@ -1,0 +1,82 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block main %}
+
+	<style>
+		.content-header {
+			display: none;
+		}
+		.content-wrapper {
+			width: 100%;
+			background-image: url('https://images.pexels.com/photos/403575/pexels-photo-403575.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+			background-size: cover;
+		}
+		.content {
+			margin-top: 5%;
+			text-align: center;
+		}
+		h1 {
+			font-weight: bold;
+			font-size: 3rem;
+		}
+		.containerHome {
+			width: 100%;
+		}
+
+		.row {
+			width: 85%;
+			margin: 10% auto;
+			display: flex;
+			flex-direction: row;
+		}
+		.cardAdmin {
+			position: relative;
+			text-align: center;
+			transition: all 0.2s ease-in-out;
+		}
+		img {
+			width: 100%;
+			border-radius: 10px;
+			filter: brightness(70%);
+		}
+		h3 {
+			position: relative;
+			font-weight: bold;
+			color: white;
+			top: -25%;
+		}
+	</style>
+	<div class="containerHome">
+		<div class="content">
+			<h1>Bienvenue a toi Administrateur</h1>
+		</div>
+		<div class="row">
+			<div class="col col-3">
+				<a class="cardAdmin" href="{{ path ('admin_users')}}">
+					<img src="{{ asset ('assets/images/usersAdmin.jpg')}}">
+						<h3>Utilisateurs</h3>
+					</img>
+				</a>
+			</div>
+			<div class="col col-3">
+				<a class="cardAdmin" href="{{ path ('admin_fichiers')}}">
+					<img src="{{ asset ('assets/images/fichierAdmin.jpg')}}">
+					<h3>Fichiers</h3>
+				</a>
+			</div>
+			<div class="col col-3">
+				<a class="cardAdmin" href="{{ path ('admin_commentaires')}}">
+					<img src="{{ asset ('assets/images/commentAdmin.jpg')}}">
+					<h3>Commentaires</h3>
+				</a>
+			</div>
+			<div class="col col-3">
+				<a class="cardAdmin" href="{{ path ('admin_category')}}">
+					<img src="{{ asset ('assets/images/categoryAdmin.jpg')}}">
+					<h3>Catégories</h3>
+				</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

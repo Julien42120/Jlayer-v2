@@ -30,16 +30,10 @@ class UserController extends AbstractController
         $fichier = new Fichiers();
         $form = $this->createForm(FichiersType::class, $fichier);
 
-        // dd($form);
         $form->handleRequest($request);
         $images = $form->get('images')->getData();
         $fichiersSTL = $form->get('fichierSTL')->getData();
         $folderName = $form->get('nom')->getData();
-
-        // if (!file_exists('path/to/directory')) {
-        //     mkdir('path/to/directory', 0777, true);
-        // }
-
 
         if ($form->isSubmitted() && $form->isValid()) {
             if ($images !== null) {
@@ -82,9 +76,9 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"}, requirements={"id"="\d+"})
      */
-    public function edit(Request $request, User $user, SluggerInterface $slugger, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function edit(Request $request, User $user, SluggerInterface $slugger): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);

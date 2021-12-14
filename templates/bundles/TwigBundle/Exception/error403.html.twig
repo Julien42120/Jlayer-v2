@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{status_code}}
+{% endblock %}
+
+{% block stylesheets %}
+	<style>
+		.error {
+			background-color: red;
+		}
+		.container {
+			width: 70%;
+			text-align: center;
+		}
+		.erreur {
+			color: white;
+		}
+		.errorText {
+			color: white;
+		}
+	</style>
+{% endblock %}
+
+{% block body %}
+	<div class="error">
+		<div class="container">
+			<h1 class="erreur">Erreur de merde
+				{{status_code}}</h1>
+			<h3 class="errorText">{{status_text}}</h3>
+			<div class="errorImage">
+				<img src="{{ asset ('assets/images/errorImage.jpg')}}">
+			</div>
+			<h3 class="returnHome">
+				<a href="{{path('home')}}">Retourner à l'accueil</a>
+			</h3>
+		</div>
+	</div>
+{% endblock %}
