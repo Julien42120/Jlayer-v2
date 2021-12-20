@@ -69,7 +69,7 @@
 									<p class="nbrLikeCard">
 										<small class="text-muted">{{voteByFichier|last ~ ' likes'}}</small>
 									</p>
-									<img src="{{ asset ('assets/images/heart.png')}}" class="heartCard">
+									<i class="fas fa-heart" style="color:red;"></i>
 								</div>
 
 							</div>
@@ -79,5 +79,39 @@
 			</div>
 		</div>
 
+		<div class="pagination">
+			<ul class="pagination" id="catPagination">
+				<li class="{{( page == 1 ) ? 'disabled' : '' }} page-item">
+					<a class="page-link" href="?page=1">
+						<i class="fas fa-step-backward"></i>
+					</a>
+				</li>
+				<li class="{{ (page == 1 ) ? 'disabled' : '' }} page-item">
+					<a class="page-link" href="{{ (page > 1) ? '?page=' ~ ( page - 1) : '' }}">
+						<i class="fas fa-angle-left"></i>
+					</a>
+				</li>
+				{% set pages = (total / limit)|round(0, 'ceil') %}
+
+				{% for item in 1.. pages %}
+					<li class="{{(page == item) ? 'active' : '' }} page-item">
+						<a class="page-link" href="?page={{ item }}">{{ item }}</a>
+					</li>
+				{% endfor %}
+
+				<li class="{{ (page == pages) ? 'disabled' : '' }} page-item">
+					{% if page < pages %}
+						<a class="page-link" href="{{'?page=' ~ (page + 1)}}">
+							<i class="fas fa-angle-right"></i>
+						</a>
+					{% endif %}
+				</li>
+				<li class="{{( page == pages ) ? 'disabled' : '' }} page-item">
+					<a class="page-link" href="?page={{ pages }}">
+						<i class="fas fa-step-forward"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
 	</div>
 {% endblock %}

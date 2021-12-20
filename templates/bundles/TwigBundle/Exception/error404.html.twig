@@ -1,23 +1,38 @@
-{# templates/bundles/TwigBundle/Exception/error404.html.twig #}
-
-{% extends 'base.html.twig' %}
+{% extends "base.html.twig" %}
 
 {% block title %}
-	{{status_code}}
+	Accès Interdit
 {% endblock %}
 
 {% block body %}
-	<div class="Error">
-		<div class="container">
-			<h1 class="Erreur">Erreur
-				{{status_code}}</h1>
-			<h3 class="ErrorText">{{status_text}}</h3>
-			<div class="errorImage">
-				<img src="{{ asset ('assets/images/errorImage.jpg')}}" style="width:100%">
-			</div>
-			<h3 class="returnHome">
-				<a href="{{path('home')}}">Retourner à l'accueil</a>
-			</h3>
-		</div>
+
+	<style>
+		body {
+			height: auto;
+			background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(143,110,26,1) 48%, rgba(253,187,45,1) 100%);
+			background-size: cover;
+		}
+		.ErrorPage {
+			width: 70%;
+			text-align: center;
+			margin: 0 auto;
+		}
+		.imageError {
+			width: 35%;
+			padding-top: 1%;
+		}
+		.textError {
+			font-size: 2rem;
+			padding-top: 3%;
+			color: white;
+		}
+	</style>
+	<div class="ErrorPage">
+		<h1 class="textError">La page Web demandée n'existe pas</h1>
+		<img class="imageError" src="{{ asset ('assets/images/errorPage.png')}}" alt="Ooops c'est une erreur de page">
+		<h2 class="textError">Code erreur :
+			{{status_code}}</h2>
+		<a class="retour" href="{{path ('home')}}">Retour au site</a>
 	</div>
+
 {% endblock %}

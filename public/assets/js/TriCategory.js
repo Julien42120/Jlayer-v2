@@ -1,5 +1,6 @@
 var category = document.querySelector("#biblioCat");
-var cards = document.querySelectorAll('.card')
+var cards = document.querySelectorAll('.card');
+
 
 category.addEventListener('change', (e) => {
     var id = e.target.value

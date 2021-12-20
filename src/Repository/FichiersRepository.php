@@ -59,4 +59,21 @@ class FichiersRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function getPaginatedFichiers($page, $limit)
+    {
+        $query = $this->createQueryBuilder('a')
+            ->setFirstResult(($page * $limit) - $limit)
+            ->setMaxResults($limit);
+
+        return $query->getQuery()->getResult();
+    }
+
+    // return number of files
+    public function getTotalFichiers()
+    {
+        $query = $this->createQueryBuilder('a')
+            ->select('COUNT(a)');
+        return $query->getQuery()->getSingleScalarResult();
+    }
 }

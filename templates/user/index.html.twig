@@ -97,7 +97,7 @@
 									<form class="FormDelete" method="post" action="{{ path('commentaires_delete', {'id': commentaireByUser.id}) }}" onsubmit="return confirm('Vous etes sûr de vouloir supprimé ce commentaire ?');">
 										<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ commentaireByUser.id) }}">
 										<button class="btn btn-outline-danger">Supprimer</button>
-										{# <button><img class="DeleteCom" src="../assets/images/trash.png"/></button> #}
+
 									</form>
 								</div>
 							</div>
@@ -107,6 +107,14 @@
 
 				</div>
 			</div>
+		</div>
+		<div class="deleteUser">
+
+			<form href="{{ path('app_logout') }}" method="post" action="{{ path('user_delete', {'id': user.id}) }}" onsubmit="return confirm('Désolé de vous voir partir, êtes vous sur ? ');">
+				<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+				<button class="btn buttonDelete" style="color:red; font-weight:bold">Supprimer mon profil</button>
+			</form>
+
 		</div>
 	</div>
 {% endblock %}

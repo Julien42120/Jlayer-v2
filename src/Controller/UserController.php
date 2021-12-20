@@ -10,6 +10,7 @@ use App\Repository\CommentairesRepository;
 use App\Repository\FichiersRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -41,9 +42,9 @@ class UserController extends AbstractController
             }
 
             if ($fichiersSTL !== null) {
-                $FolderId = uniqid();
+
                 foreach ($fichiersSTL as $fichierSTL) {
-                    $fichier->setFichierSTL($this->upload($fichierSTL, 'fichierSTL', $slugger, $folderName . $FolderId));
+                    $fichier->setFichierSTL($this->upload($fichierSTL, 'fichierSTL', $slugger, $folderName));
                 }
             }
 
@@ -78,15 +79,16 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"}, requirements={"id"="\d+"})
      */
-    public function edit(Request $request, User $user, SluggerInterface $slugger): Response
+    public function edit(Request $request, User $user, SluggerInterface $slugger, Filesystem $filesystem): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         $avatar = $form->get('avatar')->getData();
-
+        // $avatarNow = $user->getAvatar();
 
         if ($form->isSubmitted() && $form->isValid()) {
             if ($avatar !== null) {
+                $this->deletePicture($this->getParameter('avatar') . '/' . $user->getAvatar());
                 $user->setAvatar($this->upload($avatar, 'avatar', $slugger, null));
             }
             $this->getDoctrine()->getManager()->flush();
@@ -106,13 +108,16 @@ class UserController extends AbstractController
      */
     public function delete(Request $request, User $user): Response
     {
+
         if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
+            $this->deletePicture($this->getParameter('avatar') . '/' . $user->getAvatar());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+
+        return $this->redirectToRoute('app_register', [], Response::HTTP_SEE_OTHER);
     }
 
 
@@ -146,5 +151,11 @@ class UserController extends AbstractController
 
             return $folderName . '/' . $newFilename;
         }
+    }
+
+    public function deletePicture($profilePicture)
+    {
+        $filesystem = new Filesystem();
+        $filesystem->remove($profilePicture);
     }
 }

@@ -26,7 +26,14 @@ class BibliothequeController extends AbstractController
         $vote = $voteRepository->findAll();
         $inputValue = $request->get('searchInput');
         $fichierTab = [];
-        //  $fichierByCat = $fichiersRepository->findBy(['category_id' => $categoryFichier->getId()]);
+
+        // Nombres d'élément par page 
+        $limit = 12;
+        // Recuperation du n° de page 
+        $page = (int)$request->query->get('page', 1);
+        // Nombre de Fichiers total
+        $total = $fichiersRepository->getTotalFichiers();
+
 
         // input de recherche
         if ($inputValue != "") {
@@ -41,7 +48,7 @@ class BibliothequeController extends AbstractController
                 $fichierTab = $fichiersRepository->findAll();
             }
         } else {
-            $fichierTab = $fichiersRepository->findAll();
+            $fichierTab = $fichiersRepository->getPaginatedFichiers($page, $limit);
         }
 
         return $this->render('bibliotheque/index.html.twig', [
@@ -50,6 +57,9 @@ class BibliothequeController extends AbstractController
             'category' => $allCategory,
             'votes' => $vote,
             'inputValue' => $inputValue,
+            'total' => $total,
+            'limit' => $limit,
+            'page' => $page
         ]);
     }
 
@@ -61,9 +71,7 @@ class BibliothequeController extends AbstractController
     //         $request->query->getInt('page', 1),
     //         15
     //     );
-
     //     return $this->render('bibliotheque/index.html.twig', [
-
     //         'fichierTab' => $fichierTab,
     //     ]);
     // }

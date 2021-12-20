@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Accès Interdit
+{% endblock %}
+
+{% block body %}
+
+	<style>
+		body {
+			height: auto;
+			background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(143,110,26,1) 48%, rgba(253,187,45,1) 100%);
+			background-size: cover;
+		}
+		.ErrorPage {
+			width: 70%;
+			text-align: center;
+			margin: 0 auto;
+		}
+		.imageError {
+			width: 35%;
+			padding-top: 1%;
+		}
+		.textError {
+			font-size: 2rem;
+			padding-top: 3%;
+			color: white;
+		}
+	</style>
+	<div class="ErrorPage">
+		<h1 class="textError">Le serveur vous demande des identifiants valides pour vous permettre d’accéder aux pages web.</h1>
+		<img class="imageError" src="{{ asset ('assets/images/errorPage.png')}}" alt="Ooops c'est une erreur de page">
+		<h2 class="textError">Code erreur :
+			{{status_code}}</h2>
+		<a class="retour" href="{{path ('home')}}">Retour au site</a>
+	</div>
+
+
+{% endblock %}

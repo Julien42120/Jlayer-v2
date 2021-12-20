@@ -11,6 +11,7 @@ use App\Repository\CommentairesRepository;
 use App\Repository\FichiersRepository;
 use App\Repository\VoteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -121,15 +122,19 @@ class FichiersController extends AbstractController
         $form->handleRequest($request);
         $images = $form->get('images')->getData();
         $fichiersSTL = $form->get('fichierSTL')->getData();
+        $folderName = $form->get('nom')->getData();
 
         if ($form->isSubmitted() && $form->isValid()) {
 
             if ($images !== null) {
-                $fichier->setImages($this->upload($images, 'images', $slugger));
+                $this->deleteFichierFiles($this->getParameter('images') . '/' . $fichier->getImages());
+                $fichier->setImages($this->upload($images, 'images', $slugger, null));
             }
             if ($fichiersSTL !== null) {
+
                 foreach ($fichiersSTL as $fichierSTL) {
-                    $fichier->setFichierSTL($this->upload($fichierSTL, 'fichierSTL', $slugger));
+                    $this->deleteFichierFiles($this->getParameter($folderName) . '/' . $fichier->getFichierSTL());
+                    $fichier->setFichierSTL($this->upload($fichierSTL, 'fichierSTL', $slugger, $folderName));
                 }
             }
             $fichier->setIsVerif(false);
@@ -151,6 +156,8 @@ class FichiersController extends AbstractController
     public function delete(Request $request, Fichiers $fichier): Response
     {
         if ($this->isCsrfTokenValid('delete' . $fichier->getId(), $request->request->get('_token'))) {
+            $this->deleteFichierFiles($this->getParameter('images') . '/' . $fichier->getImages());
+            $this->deleteFichierFiles($this->getParameter('fichierSTL') . '/' . $fichier->getFichierSTL());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($fichier);
             $entityManager->flush();
@@ -159,7 +166,8 @@ class FichiersController extends AbstractController
         return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    public function upload($file, $target_directory, $slugger)
+
+    public function upload($file, $target_directory, $slugger, $folderName)
     {
         if ($file) {
             $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
@@ -168,10 +176,17 @@ class FichiersController extends AbstractController
             $newFilename = $safeFilename . '-' . uniqid() . '.' . $file->getClientOriginalExtension();
             // Move the file to the directory where brochures are stored
             try {
-                $file->move(
-                    $this->getParameter($target_directory),
-                    $newFilename
-                );
+                if ($folderName) {
+                    $file->move(
+                        $this->getParameter($target_directory) . '/' . $folderName,
+                        $newFilename
+                    );
+                } else {
+                    $file->move(
+                        $this->getParameter($target_directory),
+                        $newFilename
+                    );
+                }
             } catch (FileException $e) {
                 // ... handle exception if something happens during file upload
             }
@@ -180,5 +195,11 @@ class FichiersController extends AbstractController
             // instead of its contents
             return $newFilename;
         }
+    }
+
+    public function deleteFichierFiles($profilePicture)
+    {
+        $filesystem = new Filesystem();
+        $filesystem->remove($profilePicture);
     }
 }

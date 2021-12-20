@@ -54,26 +54,35 @@
 									</li>
 								</ul>
 							</div>
-
-							<li
-								class="nav-item">{# <a class="nav-link" href="{{ path ('fichier_s_t_l') }}">FICHIER_STL_SEUL</a> #}
-							</li>
 						</ul>
 					</div>
-					{% if app.user %}
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path ('user_index') }}"><img class="Avatar" src="{{ asset ('assets/images/avatar.png')}}"/></a>
-						</li>
-					{% else %}
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path ('app_register') }}"><img class="Avatar" src="{{ asset ('assets/images/avatar.png')}}"/></a>
-						</li>
-					{% endif %}
-					{% if app.user %}
-						<div class="mb-3">
-							<a href="{{ path('app_logout') }}">Déconnexion</a>
+					<div class="row">
+						<div class="col-6">
+							{% if app.user %}
+								<li class="nav-item">
+									<a class="AvatarUserNav nav-link" href="{{ path ('user_index') }}"><img class="Avatar" src="{{ asset ('assets/upload/photosUsers/' ~ app.user.avatar)}}"/></a>
+								</li>
+							{% else %}
+								<li class="nav-item">
+									<a class="AvatarUserNav nav-link" href="{{ path ('app_register') }}"><img class="Avatar" src="{{ asset ('assets/upload/photosUsers/avatarNull.png')}}"/></a>
+								</li>
+							{% endif %}
 						</div>
-					{% endif %}
+						<div class="col-6">
+							{% if app.user %}
+								<a href="{{ path('app_logout') }}">
+									<div class="nav-item" style="background-color:red;">
+										<i class="fas fa-sign-out-alt" style=" padding-top: 38%;
+																																																																																								    display: flex;
+																																																																																								    justify-content: center;
+																																																																																								    font-size: 200%;
+																																																																																								    color: white;
+																																																																																								    padding-bottom: 4%;"></i>
+									</div>
+								</a>
+							{% endif %}
+						</div>
+					</div>
 				</div>
 			</nav>
 
@@ -95,8 +104,9 @@
 			<div class="footer">
 				<h1>Develloppé par Julien Martin</h1>
 				<img class="logo" src="{{ asset ('assets/images/Jlayers (1).jpg')}}">
+				<a href="{{ path ('mail')}}">Contact</a>
 			</div>
 			{# <!----------------FIN FOOTER--------------------> #}
 		</body>
 	</head>
-</html>
+</html></head></html>

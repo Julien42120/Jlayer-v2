@@ -484,9 +484,22 @@ body {
 .navbar a {
   font-size: 1rem;
 }
+.navbar .row {
+  width: 10%;
+}
+.navbar .col-6 {
+  padding-right: 0%;
+  padding-left: 0%;
+}
 .navbar .Avatar {
-  width: 120%;
-  padding-bottom: 1vw;
+  width: 46%;
+  padding-bottom: 33%;
+}
+.navbar .AvatarUserNav {
+  padding: 0 !important;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 @media only screen and (max-width: 800px) {
@@ -519,9 +532,51 @@ body {
   font-size: 0.7rem;
 }
 
+.contactAdmin {
+  height: auto;
+  background-image: url("../images/pexels-rodion-kutsaiev-7897470.jpg");
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+}
+.contactAdmin h1 {
+  font-weight: bold;
+  padding-top: 4%;
+  color: white;
+}
+.contactAdmin #contact_message {
+  margin-top: 3%;
+  overflow-y: scroll;
+  min-height: 30vh;
+  height: auto;
+}
+.contactAdmin form {
+  padding: 5%;
+}
+.contactAdmin .textSend {
+  width: 60%;
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
 .pagination {
   margin: 0 auto;
   padding-bottom: 3vh;
+}
+.pagination .page-link {
+  color: #C94114;
+  background-color: transparent;
+  font-size: larger;
+  border: none;
+}
+.pagination .page-item.active .page-link {
+  background-color: black;
+  border-radius: 10px;
+}
+.pagination .page-item.disabled .page-link {
+  background-color: transparent;
 }
 
 .Accueil {
@@ -821,6 +876,11 @@ body {
   transition: transform 2s;
 }
 .Bibliotheque .card-group .row .card .card-body .card-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
   font-size: 140%;
   font-weight: bold;
 }
@@ -837,6 +897,7 @@ body {
   display: flex;
   justify-content: center;
   height: 18%;
+  align-items: baseline;
 }
 .Bibliotheque .card-group .row .card .card-body .likeBibli .nbrLikeCard {
   padding: 2%;

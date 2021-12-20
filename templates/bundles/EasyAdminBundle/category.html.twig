@@ -98,7 +98,7 @@
 			{% for AllCategory in AllCategorys %}
 				<div class="col-2">
 					<h4>{{AllCategory.category}}</h4>
-					<form method="post" action="{{ path('admin_category_fichier_delete', {'id': AllCategory.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+					<form method="post" action="{{ path('admin_category_fichier_delete', {'id': AllCategory.id}) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer cette catégorie ?');">
 						<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ AllCategory.id) }}">
 						<button class="SupprimCat">Supprimer</button>
 					</form>

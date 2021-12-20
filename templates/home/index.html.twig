@@ -6,6 +6,11 @@
 {% block body %}
 
 	<div class="Accueil">
+		{% for message in app.flashes('notice') %}
+			<div class="alert alert-success" style="margin-bottom:0%">
+				{{ message }}
+			</div>
+		{% endfor %}
 		<div class="Jlayers">
 			<h1>Jlayers</h1>
 			<h2 class="sousTitre">Impression 3D | Fichiers STL</h2>

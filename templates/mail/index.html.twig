@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Message Admin
+{% endblock %}
+
+{% block body %}
+	<div class="contactAdmin">
+		<div class="example-wrapper">
+			<h1>Laisse un message ici pour un administrateur</h1>
+
+			<form method="post" action="{{ path ('send_mail') }}">
+				<div class="userInfos">
+					<input type="text" name="pseudo" placeholder="Pseudo" value="{{ user.pseudo }}">
+					<input type="text" placeholder="Mail" name="email" value="{{( user.mail ) }}">
+				</div>
+				<div class="textSend">
+					<input id="contact_message" type="textArea" name="message" placeholder="Entrer ici votre message">
+
+					<button type="submit" class="btn btn-success">Envoyé</button>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

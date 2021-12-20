@@ -14,7 +14,7 @@ use App\Repository\UserRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
-use Symfony\Component\BrowserKit\Request;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,7 +35,7 @@ class DashboardController extends AbstractDashboardController
         $this->userRepository = $userRepository;
         $this->fichiersRepository = $fichiersRepository;
         $this->commentairesRepository = $commentairesRepository;
-        $this->categoryFichierRepository = $categoryFichierRepository;;
+        $this->categoryFichierRepository = $categoryFichierRepository;
     }
 
 
@@ -69,13 +69,21 @@ class DashboardController extends AbstractDashboardController
      */
     public function deleteUsers(HttpFoundationRequest $request, User $user): Response
     {
+
         if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
+            $this->deletePicture($this->getParameter('avatar') . '/' . $user->getAvatar());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
         }
 
         return $this->redirectToRoute('admin_users', [], Response::HTTP_SEE_OTHER);
+    }
+
+    public function deletePicture($profilePicture)
+    {
+        $filesystem = new Filesystem();
+        $filesystem->remove($profilePicture);
     }
 
     ///////////////////////////////////////////////////
@@ -101,6 +109,7 @@ class DashboardController extends AbstractDashboardController
     public function deleteFichiers(HttpFoundationRequest $request, Fichiers $fichier): Response
     {
         if ($this->isCsrfTokenValid('delete' . $fichier->getId(), $request->request->get('_token'))) {
+            $this->deletePicture($this->getParameter('images') . '/' . $fichier->getImages());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($fichier);
             $entityManager->flush();
@@ -188,10 +197,10 @@ class DashboardController extends AbstractDashboardController
         return $this->redirectToRoute('admin_category', [], Response::HTTP_SEE_OTHER);
     }
 
-    ////////////////////////////////////////////////
-    ////////////////////////////////////////////////
-    ////////////////////////////////////////////////
 
+    ///////////////////////////////////////////////////
+    ///////////////////////////////////////////////////
+    ///////////////////////////////////////////////////
 
     public function configureDashboard(): Dashboard
     {

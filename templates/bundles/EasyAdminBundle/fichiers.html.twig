@@ -67,7 +67,7 @@
 					<img class="adminImgFichier" src="{{ asset ('assets/upload/images/' ~ AllFichier.images)}}">
 					<h4>{{AllFichier.nom}}</h4>
 					<p>{{AllFichier.description}}</p>
-					<form method="post" action="{{ path('admin_fichiers_delete', {'id': AllFichier.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+					<form method="post" action="{{ path('admin_fichiers_delete', {'id': AllFichier.id}) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer ce fichier ?');">
 						<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ AllFichier.id) }}">
 						<button class="fichierdelete">Supprimer le fichier</button>
 					</form>
