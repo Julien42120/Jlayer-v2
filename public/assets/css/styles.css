@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap");
 @import url(https://fonts.googleapis.com/css?family=Roboto:900);
 .box span {
@@ -44,7 +45,7 @@
   margin: -10px;
   animation: animate 2s infinite;
   top: 90vh;
-  left: 50vw;
+  left: 49vw;
   position: absolute;
 }
 
@@ -415,6 +416,11 @@ section .container.active .signinBx .imgBx {
   color: white;
   font-weight: bold;
 }
+@media only screen and (max-width: 800px) {
+  .BackModiFichier .ModifFichier {
+    width: 100%;
+  }
+}
 
 *, *:before, *:after {
   margin: 0;
@@ -470,6 +476,33 @@ section .container.active .signinBx .imgBx {
   color: darkblue;
 }
 
+.navbar .navbar-brand {
+  width: 4%;
+}
+.navbar .navbar-brand .LogoJlayers {
+  width: 70%;
+}
+.navbar .Avatar {
+  width: 45%;
+  border-radius: 50%;
+}
+.navbar .profile-menu {
+  width: 7%;
+}
+
+.profile-menu .dropdown-menu {
+  right: 0;
+  left: unset;
+}
+.profile-menu .fa-fw {
+  margin-right: 10px;
+}
+
+.toggle-change::after {
+  border-top: 0;
+  border-bottom: 0.3em solid;
+}
+
 body {
   width: 100vw;
   height: auto;
@@ -477,48 +510,6 @@ body {
   font-family: "Dosis", sans-serif;
 }
 
-.navbar {
-  height: 40px;
-  max-width: 100vw;
-}
-.navbar a {
-  font-size: 1rem;
-}
-.navbar .row {
-  width: 10%;
-}
-.navbar .col-6 {
-  padding-right: 0%;
-  padding-left: 0%;
-}
-.navbar .Avatar {
-  width: 46%;
-  padding-bottom: 33%;
-}
-.navbar .AvatarUserNav {
-  padding: 0 !important;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-@media only screen and (max-width: 800px) {
-  .navbar {
-    height: 50px;
-    max-width: 100vw;
-  }
-  .navbar a {
-    font-size: 1rem;
-    position: absolute;
-    top: 16%;
-  }
-  .navbar .Avatar {
-    width: 120%;
-    position: absolute;
-    top: -40%;
-    left: 335%;
-  }
-}
 .footer {
   height: auto;
   background-color: black;
@@ -533,6 +524,7 @@ body {
 }
 
 .contactAdmin {
+  min-height: 80vh;
   height: auto;
   background-image: url("../images/pexels-rodion-kutsaiev-7897470.jpg");
   background-size: cover;
@@ -542,19 +534,42 @@ body {
 .contactAdmin h1 {
   font-weight: bold;
   padding-top: 4%;
-  color: white;
+  color: #5a5a5a;
 }
 .contactAdmin #contact_message {
   margin-top: 3%;
   overflow-y: scroll;
   min-height: 30vh;
   height: auto;
+  background-color: rgba(255, 255, 255, 0.501);
+  border: none;
 }
 .contactAdmin form {
-  padding: 5%;
+  width: 35%;
+  margin: 2% auto;
+  padding: 3%;
+  background-color: rgba(0, 0, 0, 0.34);
+  border-radius: 10px;
+}
+.contactAdmin form .row {
+  width: 100%;
+  margin: 0 auto;
+}
+.contactAdmin form .row .userName {
+  padding-left: 0%;
+}
+.contactAdmin form .row .userName input {
+  background-color: rgba(255, 255, 255, 0.501);
+  border: none;
+}
+.contactAdmin form .row .userMail {
+  padding-left: 0%;
+}
+.contactAdmin form .row .userMail input {
+  background-color: rgba(255, 255, 255, 0.501);
+  border: none;
 }
 .contactAdmin .textSend {
-  width: 60%;
   display: flex;
   height: auto;
   flex-direction: column;
@@ -592,14 +607,14 @@ body {
   background-attachment: fixed;
 }
 .Accueil .Jlayers h1 {
-  padding-top: 10%;
-  font-size: 10vw;
+  padding-top: 20vh;
+  font-size: 700%;
   color: white;
   text-shadow: 4px -2px 4px black;
   animation: fadeInAnimation ease 3s;
 }
 .Accueil .Jlayers .sousTitre {
-  font-size: 2vw;
+  font-size: 200%;
   color: white;
   text-shadow: 4px -2px 4px black;
   animation: fadeInAnimation ease 3s;
@@ -625,7 +640,7 @@ body {
   height: 60vh;
   width: 50%;
   position: relative;
-  background-image: url("../images/Formlabs_1.jpg");
+  background-image: url("../images/PlaBenchy.jpg");
   background-size: cover;
   background-position: center;
   border-right: 3px solid black;
@@ -644,7 +659,7 @@ body {
   height: 60vh;
   width: 50%;
   position: relative;
-  background-image: url("../images/Formlabs_1 (1).jpg");
+  background-image: url("../images/résineBenchy.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -676,7 +691,7 @@ body {
 }
 .ImpressionFIl .QlqPla {
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
 }
 .ImpressionFIl .QlqPla .video-background {
   position: absolute;
@@ -691,7 +706,7 @@ body {
   z-index: -1;
 }
 .ImpressionFIl .QlqPla h1 {
-  margin: 14% auto;
+  margin: 5% auto;
   font-size: 6vw;
   color: white;
 }
@@ -748,7 +763,7 @@ body {
 }
 .ImpressionRes .QlqPla {
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
 }
 .ImpressionRes .QlqPla .video-background {
   position: absolute;
@@ -763,7 +778,7 @@ body {
   z-index: -1;
 }
 .ImpressionRes .QlqPla h1 {
-  margin: 14% auto;
+  margin: 5% auto;
   font-size: 6vw;
   color: white;
 }
@@ -869,13 +884,22 @@ body {
 .Bibliotheque .card-group .row {
   justify-content: space-between;
 }
-.Bibliotheque .card-group .row .card {
+.Bibliotheque .card-group .row .LinkCard {
+  text-decoration: none;
+  color: black;
+}
+.Bibliotheque .card-group .row .LinkCard .card {
   margin: 2% auto;
   margin-bottom: 15%;
   padding: 0;
   transition: transform 2s;
 }
-.Bibliotheque .card-group .row .card .card-body .card-title {
+.Bibliotheque .card-group .row .LinkCard .card img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+.Bibliotheque .card-group .row .LinkCard .card .card-body .card-title {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -884,7 +908,7 @@ body {
   font-size: 140%;
   font-weight: bold;
 }
-.Bibliotheque .card-group .row .card .card-body .card-text {
+.Bibliotheque .card-group .row .LinkCard .card .card-body .card-text {
   font-size: 85%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -892,18 +916,18 @@ body {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-.Bibliotheque .card-group .row .card .card-body .likeBibli {
+.Bibliotheque .card-group .row .LinkCard .card .card-body .likeBibli {
   width: 100%;
   display: flex;
   justify-content: center;
   height: 18%;
   align-items: baseline;
 }
-.Bibliotheque .card-group .row .card .card-body .likeBibli .nbrLikeCard {
+.Bibliotheque .card-group .row .LinkCard .card .card-body .likeBibli .nbrLikeCard {
   padding: 2%;
   font-size: 1rem;
 }
-.Bibliotheque .card-group .row .card .card-body .likeBibli .heartCard {
+.Bibliotheque .card-group .row .LinkCard .card .card-body .likeBibli .heartCard {
   width: 13%;
 }
 .Bibliotheque .card-group .row .card:hover {
@@ -1198,31 +1222,39 @@ body {
 }
 .Users .Fichiers .Depot .textArea {
   height: 20%;
-  width: 80%;
+  width: 70%;
 }
 .Users .Fichiers .Depot .mb-3 {
   padding-top: 0vh;
   padding-right: 0vw;
 }
-.Users .Fichiers .Depot .File {
-  margin: auto;
+.Users .Fichiers .Depot .row {
   width: 80%;
-  background-color: #d07aff80;
-  padding: 2%;
-}
-.Users .Fichiers .Depot .File .GetFile {
-  font-size: 0.8rem;
-  text-decoration: underline;
-}
-.Users .Fichiers .Depot .Image {
   margin: 0 auto;
-  width: 80%;
-  background-color: #1814ff82;
-  padding: 2%;
 }
-.Users .Fichiers .Depot .Image .GetImage {
+.Users .Fichiers .Depot .row .File {
+  margin: auto;
+  width: 40%;
+  background-color: #d07aff52;
+  padding: 2%;
+  border-radius: 10px;
+}
+.Users .Fichiers .Depot .row .File .GetFile {
   font-size: 0.8rem;
   text-decoration: underline;
+  font-weight: bold;
+}
+.Users .Fichiers .Depot .row .Image {
+  margin: 0 auto;
+  width: 40%;
+  background-color: #1814ff41;
+  padding: 2%;
+  border-radius: 10px;
+}
+.Users .Fichiers .Depot .row .Image .GetImage {
+  font-size: 0.8rem;
+  text-decoration: underline;
+  font-weight: bold;
 }
 .Users .Fichiers .Depot #avatar {
   width: 10vw;
@@ -1287,14 +1319,6 @@ body {
 }
 .formVote label {
   display: none;
-}
-
-.Error {
-  background-color: red;
-}
-.Error .container {
-  width: 60%;
-  margin: 0 auto;
 }
 
 /*# sourceMappingURL=styles.css.map */

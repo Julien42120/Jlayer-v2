@@ -23,7 +23,8 @@ class Vote
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity=fichiers::class, inversedBy="votes")
+     * @ORM\ManyToOne(targetEntity=fichiers::class, inversedBy="votes", cascade={"persist", "remove"} )
+     * @ORM\JoinColumn(onDelete="CASCADE") 
      */
     private $fichier;
 

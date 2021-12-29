@@ -32,6 +32,15 @@
 			{{ form_widget(form.fichierSTL) }}
 		</div>
 	</div>
+	<div class="col-12 d-flex justify-content-center listFile">
+		{% for fichierSTL in fichier.fichierSTL %}
+			<a class="btn mx-2 deleteFileBtn" id="{{fichierSTL}}" data-fichier-id="{{fichier.id}}">
+				<i class="fas fa-trash-alt" style='font-size:20px;color:red'></i>
+				{{fichierSTL}}
+				<p class="">Supprimer</p>
+			</a>
+		{% endfor %}
+	</div>
 	<br>
 	<div class="col-12 Image">
 		<p class="GetImage">Image de rendu d'impression</p>
@@ -40,9 +49,9 @@
 		</div>
 	</div>
 	<br>
-	<button type="submit" class="btn btn-success">Modifier</button>
+	<button type="submit" class="btn btn-success">Validé mes modifications</button>
 	<div class="conditions">
-		<p>* Chaque dossier sera vérifié par l'administrateur avant la mise en ligne pour évité les contenus indésirables</p>
+		<p>* Les fichiers déposés pourront etre supprimés par l'administrateur en cas de contenu indésirables</p>
 	</div>
 </div>
 {{ form_end(form) }}

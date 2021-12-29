@@ -46,6 +46,7 @@ class Fichiers
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="fichiers")
+     * @ORM\JoinColumn(onDelete="CASCADE") 
      */
     private $user;
 
@@ -81,9 +82,13 @@ class Fichiers
         return $this->fichierSTL;
     }
 
-    public function setFichierSTL(string $fichierSTL): self
+    public function setFichierSTL($fichierSTL): self
     {
-        array_push($this->fichierSTL, $fichierSTL);
+        if (is_array($fichierSTL)) {
+            $this->fichierSTL = $fichierSTL;
+        } else {
+            array_push($this->fichierSTL, $fichierSTL);
+        }
 
         return $this;
     }

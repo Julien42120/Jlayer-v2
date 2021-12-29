@@ -25,6 +25,7 @@ class Commentaires
 
     /**
      * @ORM\ManyToOne(targetEntity=Fichiers::class)
+     * @ORM\JoinColumn(onDelete="CASCADE") 
      */
     private $fichier;
 

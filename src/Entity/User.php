@@ -40,11 +40,13 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="user")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $commentaires;
 
     /**
      * @ORM\OneToMany(targetEntity=Fichiers::class, mappedBy="user")
+     * @ORM\JoinColumn(onDelete="CASCADE") 
      */
     private $fichiers;
 
@@ -60,6 +62,7 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity=Vote::class, mappedBy="user")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $votes;
 

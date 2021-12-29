@@ -8,8 +8,11 @@
 			{% block title %}Jlayers
 			{% endblock %}
 		</title>
+		<link rel="icon" type="image/x-icon" href="{{ asset ('assets/images/logoOnglet.png')}}">
 		{% block stylesheets %}
 			<link href="{{ asset ("assets/css/styles.css")}}" rel="stylesheet">
+
+			<script src="https://unpkg.com/rive-js"></script>
 
 			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 			<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,86 +30,95 @@
 
 		<!--NAVBAR-->
 		<header>
-			<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 				<div class="container-fluid">
+					<a class="navbar-brand" href="{{path ('home')}}"><img class="LogoJlayers" src="{{ asset ('assets/images/logoOnglet.png')}}" alt="Logo Jlayers"/></a>
 					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon"></span>
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
-
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<li class="nav-item">
-								<a class="nav-link active" aria-current="page" href="{{path ('home')}}">Accueil</a>
+								<a class="nav-link active" aria-current="page" href="{{ path ('home')}}">Accueil</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="{{ path ('bibliotheque')}}">Bibliothèque Fichiers STL</a>
+								<a class="nav-link" href="{{ path ('bibliotheque')}}">Bibliothéque STL</a>
 							</li>
-							<div class="dropdown">
-								<button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+							<li class="nav-item">
+								<a class="nav-link" href="{{ path ('mail')}}">Contact</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 									Infos
-								</button>
-								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 									<li>
-										<a class="dropdown-item" href="{{path ('impression_fil')}}">Impressions filaments</a>
+										<a class="dropdown-item" href="{{ path ('impression_fil')}}">Impressions filaments</a>
 									</li>
 									<li>
 										<a class="dropdown-item" href="{{ path ('impression_resine')}}">Impressions résines</a>
 									</li>
 								</ul>
-							</div>
+							</li>
 						</ul>
-					</div>
-					<div class="row">
-						<div class="col-6">
-							{% if app.user %}
-								<li class="nav-item">
-									<a class="AvatarUserNav nav-link" href="{{ path ('user_index') }}"><img class="Avatar" src="{{ asset ('assets/upload/photosUsers/' ~ app.user.avatar)}}"/></a>
-								</li>
-							{% else %}
-								<li class="nav-item">
-									<a class="AvatarUserNav nav-link" href="{{ path ('app_register') }}"><img class="Avatar" src="{{ asset ('assets/upload/photosUsers/avatarNull.png')}}"/></a>
-								</li>
-							{% endif %}
-						</div>
-						<div class="col-6">
-							{% if app.user %}
-								<a href="{{ path('app_logout') }}">
-									<div class="nav-item" style="background-color:red;">
-										<i class="fas fa-sign-out-alt" style=" padding-top: 38%;
-																																																																																								    display: flex;
-																																																																																								    justify-content: center;
-																																																																																								    font-size: 200%;
-																																																																																								    color: white;
-																																																																																								    padding-bottom: 4%;"></i>
-									</div>
+						<ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu">
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									{% if app.user %}
+										<img class="Avatar" src="{{ asset ('assets/upload/photosUsers/' ~ app.user.avatar)}}"/>
+									{% else %}
+										<i class="fas fa-user"></i>
+									{% endif %}
 								</a>
-							{% endif %}
-						</div>
-					</div>
+								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+									{% if app.user %}
+										<li>
+											<a class="dropdown-item" href="{{ path ('user_index') }}">
+												<i class="fas fa-sliders-h fa-fw"></i>
+												Profil</a>
+										</li>
+									{% else %}
+										<li>
+											<a class="dropdown-item" href="{{ path ('app_register') }}">
+												<i class="fas fa-cog fa-fw"></i>
+												Inscription / Connexion</a>
+										</li>
+									{% endif %}
+									{% if app.user %}
+										<li><hr class="dropdown-divider"></li>
+										<li>
+											<a class="dropdown-item" href="{{ path ('app_logout') }}" style="color:red;">
+												<i class="fas fa-sign-out-alt fa-fw" style="color:red;"></i>
+												Déconnexion</a>
+										</li>
+									{% endif %}
+								</ul>
+							</li>
+						</li>
+					</ul>
 				</div>
-			</nav>
-
-			<!--FIN NAVBAR-->
-		</head>
-		<body>
-			{% block body %}{% endblock %}
-			<script src="{{ asset ("assets/js/Login.js")}}"></script>
-			<script src="https://preview.babylonjs.com/viewer/babylon.viewer.js"></script>
-			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-			<script src="{{ asset ("assets/js/download.js")}}"></script>
-			<script src="{{ asset ("assets/js/vue3d.js")}}"></script>
-			<script src="{{ asset ("assets/js/like.js")}}"></script>
-			<script src="{{ asset ("assets/js/TriCategory.js")}}"></script>
-			<script src="https://unpkg.com/rive-js"></script>
-
-			{% block javascripts %}{% endblock %}
-			{# <!----------------FOOTER--------------------> #}
-			<div class="footer">
-				<h1>Develloppé par Julien Martin</h1>
-				<img class="logo" src="{{ asset ('assets/images/Jlayers (1).jpg')}}">
-				<a href="{{ path ('mail')}}">Contact</a>
 			</div>
-			{# <!----------------FIN FOOTER--------------------> #}
-		</body>
+		</nav>
+		<!--FIN NAVBAR-->
 	</head>
-</html></head></html>
+	<body>
+		{% block body %}{% endblock %}
+		<script src="{{ asset ("assets/js/Login.js")}}"></script>
+		<script src="https://preview.babylonjs.com/viewer/babylon.viewer.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+		<script src="{{ asset ("assets/js/download.js")}}"></script>
+		<script src="{{ asset ("assets/js/like.js")}}"></script>
+		<script src="{{ asset ("assets/js/TriCategory.js")}}"></script>
+		<script src="{{ asset ("assets/js/navbar.js")}}"></script>
+
+		<script src="https://unpkg.com/rive-js"></script>
+
+		{% block javascripts %}{% endblock %}
+		{# <!----------------FOOTER--------------------> #}
+		<div class="footer">
+			<h1>Develloppé par Julien Martin</h1>
+			<img class="logo" src="{{ asset ('assets/images/Jlayers (1).jpg')}}">
+		</div>
+		{# <!----------------FIN FOOTER--------------------> #}
+	</body>
+</html></head></html></head></html>

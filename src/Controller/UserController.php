@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -52,7 +53,9 @@ class UserController extends AbstractController
             $fichier->setIsVerif(false);
             $this->getDoctrine()->getManager()->persist($fichier);
             $this->getDoctrine()->getManager()->flush();
-            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('user_index', [
+                $this->addFlash('fichier', ' Votre fichier a été mis en ligne ')
+            ], Response::HTTP_SEE_OTHER);
         }
 
 
@@ -84,12 +87,16 @@ class UserController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         $avatar = $form->get('avatar')->getData();
-        // $avatarNow = $user->getAvatar();
+        $avatarNow = $user->getAvatar();
 
         if ($form->isSubmitted() && $form->isValid()) {
             if ($avatar !== null) {
-                $this->deletePicture($this->getParameter('avatar') . '/' . $user->getAvatar());
-                $user->setAvatar($this->upload($avatar, 'avatar', $slugger, null));
+                if ($avatarNow === "avatarNull.png") {
+                    $user->setAvatar($this->upload($avatar, 'avatar', $slugger, null));
+                } else {
+                    $user->setAvatar($this->upload($avatar, 'avatar', $slugger, null));
+                    $this->deletePicture($this->getParameter('avatar') . '/' . $user->getAvatar());
+                }
             }
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('user_index', [
@@ -106,18 +113,21 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}", name="user_delete", methods={"POST"})
      */
-    public function delete(Request $request, User $user): Response
+    public function delete(Request $request, User $user, TokenStorageInterface $tokenStorage): Response
     {
-
+        $avatarNow = $user->getAvatar();
         if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
-            $this->deletePicture($this->getParameter('avatar') . '/' . $user->getAvatar());
+            if ($avatarNow !== "avatarNull.png") {
+                $this->deletePicture($this->getParameter('avatar') . '/' . $user->getAvatar());
+            }
             $entityManager = $this->getDoctrine()->getManager();
+            $tokenStorage->setToken();
             $entityManager->remove($user);
             $entityManager->flush();
         }
 
 
-        return $this->redirectToRoute('app_register', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
     }
 
 

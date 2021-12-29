@@ -59,7 +59,9 @@ class DashboardController extends AbstractDashboardController
 
     public function index(): Response
     {
+
         return $this->render('bundles/EasyAdminBundle/user.html.twig', [
+            'totalUsers' => count($this->userRepository->findAll()),
             'AllUsers' => $this->userRepository->findAll(),
         ]);
     }
@@ -98,7 +100,7 @@ class DashboardController extends AbstractDashboardController
     {
         return $this->render('bundles/EasyAdminBundle/fichiers.html.twig', [
             'AllFichiers' => $this->fichiersRepository->findAll(),
-
+            'totalFichier' => count($this->fichiersRepository->findAll()),
         ]);
     }
 
@@ -110,6 +112,12 @@ class DashboardController extends AbstractDashboardController
     {
         if ($this->isCsrfTokenValid('delete' . $fichier->getId(), $request->request->get('_token'))) {
             $this->deletePicture($this->getParameter('images') . '/' . $fichier->getImages());
+            if ($fichier->getFichierSTL()) {
+                foreach ($fichier->getFichierSTL() as $fichierSTL) {
+                    $this->deletePicture($this->getParameter('fichierSTL') . '/' . $fichierSTL);
+                }
+                $this->deletePicture($this->getParameter('fichierSTL') . '/' . $fichier->getNom());
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($fichier);
             $entityManager->flush();
@@ -135,6 +143,7 @@ class DashboardController extends AbstractDashboardController
         return $this->render('bundles/EasyAdminBundle/commentaires.html.twig', [
             'AllComments' => $this->commentairesRepository->findAll(),
             'AllAvatarComments' => $AllAvatarComment
+
         ]);
     }
 
@@ -180,6 +189,7 @@ class DashboardController extends AbstractDashboardController
         return $this->render('bundles/EasyAdminBundle/category.html.twig', [
             'AllCategorys' => $this->categoryFichierRepository->findAll(),
             'form' => $form->createView(),
+            'totalCat' => count($this->categoryFichierRepository->findAll()),
         ]);
     }
 

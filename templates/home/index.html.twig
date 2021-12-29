@@ -1,11 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Impression 3D
+{% block title %}Jlayers
 {% endblock %}
 
 {% block body %}
-
+	{# <canvas id="canvas" width="400" height="300"></canvas>
+															<script src="https://unpkg.com/rive-js@0.7.16/dist/rive.min.js"></script>
+															<script>
+																// autoplays the first animation in the default artboard
+														new rive.Rive({src: "{{ asset ('assets/rive/run.riv') }}", canvas: document.getElementById('canvas'), autoplay: true});
+															</script> #}
 	<div class="Accueil">
+		{% for message in app.flashes('mail') %}
+			<div class="alert alert-success" style="margin-bottom:0%">
+				{{ message }}
+			</div>
+		{% endfor %}
 		{% for message in app.flashes('notice') %}
 			<div class="alert alert-success" style="margin-bottom:0%">
 				{{ message }}
@@ -32,14 +42,14 @@
 		</div>
 
 		<div class="row">
-			<div class="PLA col-6 col-sm-12">
+			<div class="col col-12 col-sm-6 col-md-3 PLA">
 				<div class="insidePLA">
 					<a href="{{ path ('impression_fil')}}">
 						<button class="btn btn-warning" type="button">Imprimantes 3D filaments</button>
 					</a>
 				</div>
 			</div>
-			<div class="Resine col-6 col-sm-12">
+			<div class="col col-12 col-sm-6 col-md-3 Resine">
 				<div class="insideResine">
 					<a href="{{ path ('impression_resine')}}">
 						<button class="btn btn-warning" type="button">Imprimantes 3D Résines</button>

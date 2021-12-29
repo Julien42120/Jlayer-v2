@@ -1,0 +1,32 @@
+.navbar{
+   
+    .navbar-brand{
+        width: 4%;
+        .LogoJlayers{
+            width: 70%;
+        }
+    }
+    .Avatar{
+        width: 45%;
+        border-radius: 50%;
+    }
+    .profile-menu{
+        width: 7%;
+    }
+}
+
+.profile-menu { 
+    .dropdown-menu{
+      right: 0;
+      left: unset;
+    }
+    .fa-fw{
+      margin-right: 10px;
+    }  
+  }
+  .toggle-change{
+      &::after {
+      border-top: 0;
+      border-bottom: .3em solid;
+      }
+  } 

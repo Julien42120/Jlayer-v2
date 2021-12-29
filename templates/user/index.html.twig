@@ -1,11 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Profil User
+{% block title %}Profil Utilisateur | Jlayers
 {% endblock %}
 
 {% block body %}
 
 	<div class="Users">
+		{% for message in app.flashes('deleteFichier') %}
+			<div class="alert alert-success" style="margin-bottom:0%">
+				{{ message }}
+			</div>
+		{% endfor %}
+		{% for message in app.flashes('fichier') %}
+			<div class="alert alert-success" style="margin-bottom:0%">
+				{{ message }}
+			</div>
+		{% endfor %}
 		<div class="Avatar">
 			<h1>Salut
 				{{ user.pseudo }}
@@ -107,14 +117,6 @@
 
 				</div>
 			</div>
-		</div>
-		<div class="deleteUser">
-
-			<form href="{{ path('app_logout') }}" method="post" action="{{ path('user_delete', {'id': user.id}) }}" onsubmit="return confirm('Désolé de vous voir partir, êtes vous sur ? ');">
-				<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
-				<button class="btn buttonDelete" style="color:red; font-weight:bold">Supprimer mon profil</button>
-			</form>
-
 		</div>
 	</div>
 {% endblock %}

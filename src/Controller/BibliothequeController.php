@@ -62,17 +62,4 @@ class BibliothequeController extends AbstractController
             'page' => $page
         ]);
     }
-
-    // public function myAction(PaginatorInterface $paginator, $fichierTab, Request $request)
-    // {
-    //     $this->get('knp_paginator');
-    //     $fichierTab = $paginator->paginate(
-    //         $fichierTab,
-    //         $request->query->getInt('page', 1),
-    //         15
-    //     );
-    //     return $this->render('bibliotheque/index.html.twig', [
-    //         'fichierTab' => $fichierTab,
-    //     ]);
-    // }
 }

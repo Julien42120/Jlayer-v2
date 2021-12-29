@@ -52,6 +52,8 @@ class MailController extends AbstractController
             return $this->redirectToRoute('mail', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->redirectToRoute('home', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('home', [
+            $this->addFlash('mail', 'Votre mail a bien été envoyé')
+        ], Response::HTTP_SEE_OTHER);
     }
 }

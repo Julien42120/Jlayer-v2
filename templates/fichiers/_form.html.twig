@@ -1,7 +1,7 @@
 {{ form_start(form) }}
 
 <div class="Depot">
-	<h1>Depot de fichiers *</h1>
+	<h1>Dépôt de fichiers *</h1>
 	<div class="text">
 		<p>Déposez ici votre dossier de fichiers STL comprenant :
 			<br>
@@ -22,21 +22,24 @@
 	{{ form_widget(form.description) }}
 </div>
 <br>
-<div class="col-12 File">
-	<p class="GetFile">Fichier STL</p>
-	<div class="mb-3">
-		{{ form_widget(form.fichierSTL) }}
+<div class="row">
+	<div class="col-6 File">
+		<p class="GetFile">Fichier(s) STL</p>
+		<div class="mb-3">
+			{{ form_widget(form.fichierSTL) }}
+		</div>
+	</div>
+	<br>
+	<div class="col-6 Image">
+		<p class="GetImage">Image de rendu d'impression</p>
+		<div class="mb-3">
+			{{ form_widget(form.images) }}
+		</div>
 	</div>
 </div>
 <br>
-<div class="col-12 Image">
-	<p class="GetImage">Image de rendu d'impression</p>
-	<div class="mb-3">
-		{{ form_widget(form.images) }}
-	</div>
-</div>
-<br>
-<button type="submit" class="btn btn-success">Envoi pour vérification</button>
+<button type="submit" class="btn btn-success">Dépôt de mon fichier</button>
 <div class="conditions">
-	<p>* Chaque dossier sera vérifié par l'administrateur avant la mise en ligne pour évité les contenus indésirables</p>
+	<p>* Les fichiers déposés pourront etre supprimés par l'administrateur en cas de contenu indésirables
+	</p>
 </div></div>{{ form_end(form) }}

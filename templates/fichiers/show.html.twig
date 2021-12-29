@@ -1,21 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Fichiers
+{% block title %}
+	{{fichierSTL.nom}}
+	| Jlayers
 {% endblock %}
 
 
 {% block body %}
 	<div class="FichierSTl">
 		<div class="viewer" style="width:100%; margin:0 auto">
-			<babylon extends="maximum" scene.debug="false" scene class="babylon">
+			<babylon scene.debug="false" scene class="babylon">
+
+
 				<scene
 					debug="false" render-in-background="true" disable-camera-control="true">
 					<!-- Set the scene's main color (for both skybox and ground) -->
+
+
 					<main-color r="0" g="0" b="0"></main-color>
 					<!-- Enable and set the image processing configuration -->
 				</scene>
 				<model url="{{ asset ('assets/upload/FichierSTL/' ~ fichierSTL.fichierSTL[0] )}}"></model>
 			</babylon>
+
 			<h1 class="titleStl">{{ fichierSTL.nom }}</h1>
 		</div>
 		<a href="#PhotoLikeDownload">

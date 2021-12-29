@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BibliothequeController!
+{% block title %}Fichiers STL | Jlayers
 {% endblock %}
 
 {% block body %}
@@ -52,28 +52,28 @@
 
 				{% for fichierSTL in fichiersSTL %}
 					<div class="col col-12 col-sm-6 col-md-3 ">
-						<div id="{{fichierSTL.category.id}}" class="card" data-groups='["all", "{{fichierSTL.category.id}}"]'>
-							<a href="{{ path ('fichiers_show', {id : fichierSTL.id})}}">
+						<a class="LinkCard" href="{{ path ('fichiers_show', {id : fichierSTL.id})}}">
+							<div id="{{fichierSTL.category.id}}" class="card" data-groups='["all", "{{fichierSTL.category.id}}"]'>
 								<img src="{{ asset ('assets/upload/images/' ~ fichierSTL.images)}}" class="card-img-top" alt="{{fichierSTL.nom}}"/>
-							</a>
-							<div class="card-body">
-								<h5 class="card-title">{{fichierSTL.nom}}</h5>
-								<p class="card-text">{{fichierSTL.description}}</p>
-								{% set voteByFichier = 0 %}
-								{% for vote in votes %}
-									{% if (vote.fichier.id) == (fichierSTL.id) %}
-										{% set voteByFichier = voteByFichier + 1 %}
-									{% endif %}
-								{% endfor %}
-								<div class="likeBibli">
-									<p class="nbrLikeCard">
-										<small class="text-muted">{{voteByFichier|last ~ ' likes'}}</small>
-									</p>
-									<i class="fas fa-heart" style="color:red;"></i>
-								</div>
+								<div class="card-body">
+									<h5 class="card-title">{{fichierSTL.nom}}</h5>
+									<p class="card-text">{{fichierSTL.description}}</p>
+									{% set voteByFichier = 0 %}
+									{% for vote in votes %}
+										{% if (vote.fichier.id) == (fichierSTL.id) %}
+											{% set voteByFichier = voteByFichier + 1 %}
+										{% endif %}
+									{% endfor %}
+									<div class="likeBibli">
+										<p class="nbrLikeCard">
+											<small class="text-muted">{{voteByFichier|last ~ ' likes'}}</small>
+										</p>
+										<i class="fas fa-heart" style="color:red;"></i>
+									</div>
 
+								</div>
 							</div>
-						</div>
+						</a>
 					</div>
 				{% endfor %}
 			</div>

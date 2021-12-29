@@ -13,10 +13,12 @@ use App\Repository\VoteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use ZipArchive;
 
 /**
  * @Route("/fichiers")
@@ -123,7 +125,6 @@ class FichiersController extends AbstractController
         $images = $form->get('images')->getData();
         $fichiersSTL = $form->get('fichierSTL')->getData();
         $folderName = $form->get('nom')->getData();
-
         if ($form->isSubmitted() && $form->isValid()) {
 
             if ($images !== null) {
@@ -133,7 +134,7 @@ class FichiersController extends AbstractController
             if ($fichiersSTL !== null) {
 
                 foreach ($fichiersSTL as $fichierSTL) {
-                    $this->deleteFichierFiles($this->getParameter($folderName) . '/' . $fichier->getFichierSTL());
+
                     $fichier->setFichierSTL($this->upload($fichierSTL, 'fichierSTL', $slugger, $folderName));
                 }
             }
@@ -157,7 +158,12 @@ class FichiersController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete' . $fichier->getId(), $request->request->get('_token'))) {
             $this->deleteFichierFiles($this->getParameter('images') . '/' . $fichier->getImages());
-            $this->deleteFichierFiles($this->getParameter('fichierSTL') . '/' . $fichier->getFichierSTL());
+            if ($fichier->getFichierSTL()) {
+                foreach ($fichier->getFichierSTL() as $fichierSTL) {
+                    $this->deleteFichierFiles($this->getParameter('fichierSTL') . '/' . $fichierSTL);
+                }
+                $this->deleteFichierFiles($this->getParameter('fichierSTL') . '/' . $fichier->getNom());
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($fichier);
             $entityManager->flush();
@@ -165,7 +171,23 @@ class FichiersController extends AbstractController
 
         return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
     }
+    /**
+     * @Route("/stl/{id}", name="fichierSTL_delete", methods={"POST"})
+     */
+    public function deleteStl(Request $request, Fichiers $fichier): JsonResponse
+    {
+        $fileToDelete = $request->toArray();
+        $array = $fichier->getFichierSTL();
+        if (($key = array_search($fileToDelete['fichierName'], $array)) !== false) {
+            unset($array[$key]);
+        }
+        $fichier->setFichierSTL($array);
+        $this->deleteFichierFiles($this->getParameter('fichierSTL') . '/' . $fileToDelete['fichierName']);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->flush();
 
+        return new JsonResponse($fichier->getFichierSTL());
+    }
 
     public function upload($file, $target_directory, $slugger, $folderName)
     {
@@ -197,9 +219,50 @@ class FichiersController extends AbstractController
         }
     }
 
+    // Supression des uploads lors de modification
+
     public function deleteFichierFiles($profilePicture)
     {
         $filesystem = new Filesystem();
         $filesystem->remove($profilePicture);
+    }
+
+    //
+
+    // Test creer download zip
+
+
+    /**
+     * @Route("/{id}/zip", name="fichiers_zip", methods={"GET", "POST"})
+     */
+
+    public function exportAction(Fichiers $fichier)
+    {
+        $files = array();
+        $em = $this->getDoctrine()->getManager();
+        $doc = $em->getRepository('AdminDocumentBundle:Document')->findAll();
+        foreach ($_POST as $p) {
+            foreach ($doc as $d) {
+                if ($d->getId() == $p) {
+                    array_push($files, "../web/" . $d->getWebPath());
+                }
+            }
+        }
+        $zip = new ZipArchive();
+        $zipName = 'Documents-' . time() . ".zip";
+        $zip->open($zipName,  ZipArchive::CREATE);
+        foreach ($files as $f) {
+            $zip->addFromString(basename($f),  file_get_contents($f));
+        }
+
+        $response = new Response();
+        $response->setContent(readfile("../web/" . $zipName));
+
+        $zip->close();
+        header('Content-Type', 'application/zip');
+        header('Content-disposition: attachment; filename="' . $zipName . '"');
+        header('Content-Length: ' . filesize($zipName));
+        readfile($zipName);
+        return $response;
     }
 }

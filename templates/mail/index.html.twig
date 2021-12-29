@@ -10,9 +10,13 @@
 			<h1>Laisse un message ici pour un administrateur</h1>
 
 			<form method="post" action="{{ path ('send_mail') }}">
-				<div class="userInfos">
-					<input type="text" name="pseudo" placeholder="Pseudo" value="{{ user.pseudo }}">
-					<input type="text" placeholder="Mail" name="email" value="{{( user.mail ) }}">
+				<div class="row">
+					<div class="col col-sm-12 col-md-6 userName">
+						<input type="text" name="pseudo" placeholder="Pseudo" value="{{ user.pseudo }}">
+					</div>
+					<div class="col col-sm-12 col-md-6 userMail">
+						<input type="text" placeholder="Mail" name="email" value="{{( user.mail ) }}">
+					</div>
 				</div>
 				<div class="textSend">
 					<input id="contact_message" type="textArea" name="message" placeholder="Entrer ici votre message">
